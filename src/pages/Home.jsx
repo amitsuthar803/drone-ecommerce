@@ -8,9 +8,9 @@ function Home() {
       <section className="w-full flex-col flex">
         <div
           id="hero-section"
-          className="w-full flex justify-center items-center"
+          className="w-full  bg-contain lg:bg-cover flex justify-center items-center"
         >
-          <div className="bg-white rounded-sm px-2 py-[2rem] flex-col text-center backdrop-blur-sm bg-opacity-80  flex justify-center items-center w-[50%]">
+          <div className="lg:bg-white bg-black text-white lg:text-black rounded-sm px-2 py-[2rem] flex-col text-center backdrop-blur-sm bg-opacity-80  flex justify-center items-center w-[80%] lg:w-[50%]">
             <GiDeliveryDrone size={25} />
             <h2 className="text-xl font-semibold mt-5">The Spy World</h2>
             <p className="w-[85%] mt-2">
@@ -18,7 +18,7 @@ function Home() {
               printing machines.
             </p>
 
-            <button className="flex items-center hover:translate-y-[-2px]  mt-3 bg-black text-white px-3 py-2 gap-2 active:translate-y-[1px] shadow-lg shadow-slate-400">
+            <button className="flex items-center hover:translate-y-[-2px]  mt-3 bg-white text-black lg:bg-black lg:text-white px-3 py-2 gap-2 active:translate-y-[1px] shadow-lg  lg:shadow-slate-400">
               Discover Our Collection
               <TbDrone />
             </button>
@@ -28,17 +28,17 @@ function Home() {
 
       <section
         id="products"
-        className="flex mt-10 py-4 flex-col justify-start items-center text-center w-full"
+        className="flex lg:mt-10 lg:py-4 flex-col justify-start items-center text-center w-full"
       >
-        <h2 className="font-semibold text-3xl mb-3">
+        <h2 className="font-semibold text-[1.6rem] lg:text-3xl  mb-3">
           Elevate Your Experience: Drones for Every Need
         </h2>
-        <p className=" text-gray-500 mb-10 w-[50%]">
+        <p className=" text-gray-500 text-sm lg:text-[1rem] mb-10 w-[80%] lg:w-[50%]">
           Discover the Sky: Explore Our Wide Range of Drones for both personal
           and industrial use.
         </p>
 
-        <div className="flex justify-center items-center px-5">
+        <div className="flex justify-center flex-col-reverse lg:flex-row items-center px-5">
           <div className="">
             <h3 className="font-semibold text-xl">
               Drones for Play and Personal Use
@@ -53,7 +53,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center p-10">
+        <div className="flex justify-center flex-col lg:flex-row items-center p-10">
           <div className="p-5 flex justify-center items-center">
             <img className="w-[60%]" src="../../assets/video.png" alt="" />
           </div>
@@ -67,7 +67,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center px-5">
+        <div className="flex justify-center  flex-col-reverse lg:flex-row items-center px-5">
           <div className="">
             <h3 className="font-semibold text-xl">Drones for Geolocation</h3>
             <p className="mt-2 text-center text-sm text-gray-500">
@@ -75,12 +75,12 @@ function Home() {
             </p>
           </div>
 
-          <div className="p-5 flex justify-center items-center">
+          <div className="p-5 flex justify-center  items-center">
             <img className="w-[70%]" src="../../assets/geo.png" alt="" />
           </div>
         </div>
 
-        <div className="flex justify-center items-center p-10">
+        <div className="flex justify-center flex-col lg:flex-row  items-center p-10">
           <div className="p-5 flex justify-center items-center">
             <img
               className="w-[80%]"
@@ -99,7 +99,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center px-5">
+        <div className="flex justify-center flex-col-reverse lg:flex-row  items-center px-5">
           <div className="">
             <h3 className="font-semibold text-xl">Drones for Courier</h3>
             <p className="mt-2 text-center text-sm text-gray-500">
@@ -112,7 +112,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center items-center p-10">
+        <div className="flex justify-center flex-col lg:flex-row  items-center p-10">
           <div className="p-5 flex justify-center items-center">
             <img className="w-[80%]" src="../../assets/racing.png" alt="" />
           </div>
