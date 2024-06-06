@@ -1,7 +1,12 @@
 import { GiDeliveryDrone } from "react-icons/gi";
 import "./Home.css";
 import { TbDrone } from "react-icons/tb";
-import personal from "../../assets/personal.png";
+import Personal from "../../assets/personal.png";
+import Geolocation from "../../assets/geo.png";
+import Courier from "../../assets/courier.png";
+import Racing from "../../assets/racing.png";
+import Construction from "../../assets/construction.png";
+import Videography from "../../assets/video.png";
 
 function Home() {
   return (
@@ -50,13 +55,13 @@ function Home() {
           </div>
 
           <div className="p-5 flex justify-center items-center">
-            <img className="w-[60%]" src={personal} alt="" />
+            <img className="w-[60%]" src={Personal} alt="" />
           </div>
         </div>
 
         <div className="flex justify-center flex-col lg:flex-row items-center p-10">
           <div className="p-5 flex justify-center items-center">
-            <img className="w-[60%]" src="../../assets/video.png" alt="" />
+            <img className="w-[60%]" src={Videography} alt="" />
           </div>
 
           <div className="">
@@ -77,17 +82,13 @@ function Home() {
           </div>
 
           <div className="p-5 flex justify-center  items-center">
-            <img className="w-[70%]" src="assets/geo.png" alt="" />
+            <img className="w-[70%]" src={Geolocation} alt="" />
           </div>
         </div>
 
         <div className="flex justify-center flex-col lg:flex-row  items-center p-10">
           <div className="p-5 flex justify-center items-center">
-            <img
-              className="w-[80%]"
-              src="../../assets/construction.png"
-              alt=""
-            />
+            <img className="w-[80%]" src={Construction} alt="" />
           </div>
 
           <div className="">
@@ -109,13 +110,13 @@ function Home() {
           </div>
 
           <div className="p-5 flex justify-center items-center">
-            <img className="w-[70%]" src="../../assets/courier.png" alt="" />
+            <img className="w-[70%]" src={Courier} alt="" />
           </div>
         </div>
 
         <div className="flex justify-center flex-col lg:flex-row  items-center p-10">
           <div className="p-5 flex justify-center items-center">
-            <img className="w-[80%]" src="../../assets/racing.png" alt="" />
+            <img className="w-[80%]" src={Racing} alt="" />
           </div>
 
           <div className="">
