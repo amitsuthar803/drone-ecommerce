@@ -1,6 +1,9 @@
 function Container({ children }) {
   return (
-    <div className="bg-slate-100  w-full m-auto justify-center flex items-start">
+    <div
+      className="bg-white flex-col
+     w-full m-auto justify-center flex items-start"
+    >
       {children}
     </div>
   );
