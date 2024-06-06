@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  background-color: #fff;
+  margin: 0 auto;
+  scroll-behavior: smooth;
+}
+
+#hero-section {
+  background-image: url("../assets//drone-making-82d14d.jpg");
+  height: 100dvh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
