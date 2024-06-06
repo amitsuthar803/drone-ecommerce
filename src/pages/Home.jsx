@@ -76,7 +76,7 @@ function Home() {
           </div>
 
           <div className="p-5 flex justify-center  items-center">
-            <img className="w-[70%]" src="../assets/geo.png" alt="" />
+            <img className="w-[70%]" src="/assets/geo.png" alt="" />
           </div>
         </div>
 
