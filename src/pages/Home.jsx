@@ -1,6 +1,7 @@
 import { GiDeliveryDrone } from "react-icons/gi";
 import "./Home.css";
 import { TbDrone } from "react-icons/tb";
+import personal from "../../assets/personal.png";
 
 function Home() {
   return (
@@ -49,7 +50,7 @@ function Home() {
           </div>
 
           <div className="p-5 flex justify-center items-center">
-            <img className="w-[60%]" src="../../assets/personal.png" alt="" />
+            <img className="w-[60%]" src={personal} alt="" />
           </div>
         </div>
 
