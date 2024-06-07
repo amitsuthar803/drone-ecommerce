@@ -16,7 +16,10 @@ function Header() {
           className="lg:hidden cursor-pointer"
         />
 
-        <h2 onClick={() => navigate("/")} className="flex cursor-pointer gap-2">
+        <h2
+          onClick={() => navigate("/")}
+          className="flex max-sm:ml-10 cursor-pointer gap-2"
+        >
           <RiRobotFill size={20} />
           Spy World
         </h2>
