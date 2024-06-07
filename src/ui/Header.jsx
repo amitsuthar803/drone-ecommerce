@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BsBox2Heart, BsCart3, BsPerson, BsSearch } from "react-icons/bs";
 import { RiRobotFill } from "react-icons/ri";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
@@ -7,6 +7,9 @@ import { NavLink, useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
   const [showsidebar, setShowSidebar] = useState(false);
+  const navref = useRef();
+
+  console.log(navref);
 
   return (
     <header className="z-10 h-[75px] relative drop-shadow-sm flex justify-center m-auto border-b-2 items-center w-full bg-white">
@@ -25,9 +28,10 @@ function Header() {
         </h2>
 
         <nav
+          ref={navref}
           className={`${
-            !showsidebar && "max-sm:translate-x-[-300px]"
-          }   gap-4 max-sm:py-[5rem] max-sm:transition-all  max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:w-[200px] max-sm:border-r-2 max-sm:bg-white max-sm:h-[100vh]  flex-row max-sm:flex-col flex items-center `}
+            !showsidebar && "max-sm:translate-x-[-200px]"
+          }   gap-4 max-sm:py-[5rem] max-sm:transition-all max-sm:duration-500 max-sm:ease-in-out  max-sm:absolute max-sm:top-0 max-sm:left-0 max-sm:w-[200px] max-sm:border-r-2 max-sm:bg-white max-sm:h-[100vh]  flex-row max-sm:flex-col flex items-center `}
         >
           <RxCross2
             onClick={() => setShowSidebar(false)}
