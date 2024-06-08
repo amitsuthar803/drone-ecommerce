@@ -114,7 +114,7 @@ function Product() {
                   ${
                     selectedCategory === cate
                       ? "bg-black text-white  border-black border-2"
-                      : " hover:border-black hover:text-white hover:bg-black border-2 "
+                      : " hover:border-black active:border-black active:border-2 hover:text-white hover:bg-black border-2 "
                   }
                   `}
               >
