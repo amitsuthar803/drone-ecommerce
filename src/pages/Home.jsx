@@ -24,7 +24,7 @@ function Home() {
               printing machines.
             </p>
 
-            <button className="flex items-center hover:translate-y-[-2px]  mt-3 bg-white text-black lg:bg-black lg:text-white px-3 py-2 gap-2 active:translate-y-[1px] shadow-lg  lg:shadow-slate-400">
+            <button className="flex items-center transition-all  hover:translate-y-[-2px]  mt-3 bg-white text-black lg:bg-black lg:text-white px-3 py-2 gap-2 active:translate-y-[1px] shadow-lg  lg:shadow-slate-400">
               Discover Our Collection
               <TbDrone />
             </button>
