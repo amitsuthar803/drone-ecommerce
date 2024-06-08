@@ -32,7 +32,7 @@ function Sidebar({ setShowSidebar, sidebarRef, showSidebar }) {
   return (
     <div
       ref={sidebarRef}
-      className={`fixed top-0 left-0 h-full lg:-translate-x-full w-64 bg-gray-100 shadow-lg z-10 transform transition-transform duration-300 ${
+      className={`fixed top-0 left-0 border-r-2 h-full lg:-translate-x-full w-64 bg-gray-100 shadow-lg z-10 transform transition-transform duration-300 ${
         showSidebar ? "translate-x-0" : "-translate-x-full"
       }`}
     >

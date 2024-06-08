@@ -1,5 +1,4 @@
 import { GiDeliveryDrone } from "react-icons/gi";
-import "./Home.css";
 import { TbDrone } from "react-icons/tb";
 import Personal from "../../assets/personal.png";
 import Geolocation from "../../assets/geo.png";
