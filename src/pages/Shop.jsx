@@ -113,7 +113,7 @@ function Product() {
                 className={`px-[10px] cursor-pointer capitalize max-sm:text-sm py-[1px] border-2 rounded-full border-gray-300
                   ${
                     selectedCategory === cate
-                      ? "bg-black text-white border-black"
+                      ? "bg-black text-white border-2 border-black"
                       : " hover:border-black hover:text-white hover:bg-black"
                   }
                   `}
