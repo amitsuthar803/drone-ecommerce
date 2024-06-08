@@ -44,7 +44,7 @@ function Home() {
           and industrial use.
         </p>
 
-        <div className="flex justify-center flex-col-reverse lg:flex-row items-center px-5">
+        <div className="flex justify-center flex-col-reverse sm:flex-row items-center px-5">
           <div className="">
             <h3 className="font-semibold text-xl">
               Drones for Play and Personal Use
@@ -59,7 +59,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col lg:flex-row items-center p-10">
+        <div className="flex justify-center flex-col sm:flex-row items-center p-10">
           <div className="p-5 flex justify-center items-center">
             <img className="w-[60%]" src={Videography} alt="" />
           </div>
@@ -73,7 +73,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center  flex-col-reverse lg:flex-row items-center px-5">
+        <div className="flex justify-center  flex-col-reverse sm:flex-row items-center px-5">
           <div className="">
             <h3 className="font-semibold text-xl">Drones for Geolocation</h3>
             <p className="mt-2 text-center text-sm text-gray-500">
@@ -86,7 +86,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col lg:flex-row  items-center p-10">
+        <div className="flex justify-center flex-col sm:flex-row  items-center p-10">
           <div className="p-5 flex justify-center items-center">
             <img className="w-[80%]" src={Construction} alt="" />
           </div>
@@ -101,7 +101,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col-reverse lg:flex-row  items-center px-5">
+        <div className="flex justify-center flex-col-reverse sm:flex-row  items-center px-5">
           <div className="">
             <h3 className="font-semibold text-xl">Drones for Courier</h3>
             <p className="mt-2 text-center text-sm text-gray-500">
@@ -114,7 +114,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col lg:flex-row  items-center p-10">
+        <div className="flex justify-center flex-col sm:flex-row  items-center p-10">
           <div className="p-5 flex justify-center items-center">
             <img className="w-[80%]" src={Racing} alt="" />
           </div>

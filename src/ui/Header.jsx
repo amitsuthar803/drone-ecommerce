@@ -22,13 +22,13 @@ function Header({ setShowSidebar }) {
 
         <h2
           onClick={() => navigate("/")}
-          className="flex max-sm:ml-10 cursor-pointer gap-2"
+          className="flex max-md:ml-10 cursor-pointer gap-2"
         >
           <RiRobotFill size={20} />
           Spy World
         </h2>
 
-        <nav className="  gap-4 max-sm:hidden  flex-row  flex items-center ">
+        <nav className="  gap-4 max-md:hidden  flex-row  flex items-center ">
           <NavLink to="/shop">Shop</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact Us</NavLink>
