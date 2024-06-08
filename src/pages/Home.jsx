@@ -16,7 +16,7 @@ function Home() {
           id="hero-section"
           className="w-full  bg-contain lg:bg-cover flex justify-center items-center"
         >
-          <div className="lg:bg-white bg-black text-white lg:text-black rounded-sm px-2 py-[2rem] flex-col text-center backdrop-blur-sm bg-opacity-80  flex justify-center items-center w-[80%] lg:w-[50%]">
+          <div className="lg:bg-white lg:opacity-90 bg-black text-white lg:text-black rounded-sm px-2 py-[2rem] flex-col text-center backdrop-blur-sm bg-opacity-80  flex justify-center items-center w-[80%] lg:w-[50%]">
             <GiDeliveryDrone size={25} />
             <h2 className="text-xl font-semibold mt-5">The Spy World</h2>
             <p className="w-[85%] mt-2">
