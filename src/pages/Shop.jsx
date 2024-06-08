@@ -9,6 +9,8 @@ import drone6 from "../../assets/drone6.png";
 import drone7 from "../../assets/drone7.png";
 import drone8 from "../../assets/drone8.png";
 import drone9 from "../../assets/drone9.png";
+import drone10 from "../../assets/drone10.png";
+import drone11 from "../../assets/drone11.png";
 
 function Product() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -21,6 +23,7 @@ function Product() {
     "camera",
     "racing",
     "underwater",
+    "Li-dar",
   ];
 
   const droneImages = [
@@ -77,6 +80,18 @@ function Product() {
       path: drone9,
       price: 999,
       type: "industrial",
+    },
+    {
+      name: "drone10",
+      path: drone10,
+      price: 999,
+      type: "Li-dar",
+    },
+    {
+      name: "drone11",
+      path: drone11,
+      price: 999,
+      type: "fun",
     },
   ];
 
