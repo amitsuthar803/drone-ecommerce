@@ -19,20 +19,29 @@ function AppLayout() {
     }
   };
 
+  const handleScrollOutside = () => {
+    setShowSidebar(false);
+  };
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
+    document.addEventListener("scroll", handleScrollOutside, true);
 
     return () => {
       document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("scroll", handleScrollOutside, true);
     };
   });
 
   return (
     <div className="app-layout bg-white flex flex-col m-auto relative h-[100vh]">
       <Header setShowSidebar={setShowSidebar} />
-      {showSidebar && (
-        <Sidebar setShowSidebar={setShowSidebar} sidebarRef={sidebarRef} />
-      )}
+
+      <Sidebar
+        setShowSidebar={setShowSidebar}
+        showSidebar={showSidebar}
+        sidebarRef={sidebarRef}
+      />
 
       <div className="content overflow-y-scroll h-full flex w-full justify-center m-auto">
         <Main>

@@ -5,7 +5,7 @@ import { RiRobotFill, RiShoppingBasketLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
 
-function Sidebar({ setShowSidebar, sidebarRef }) {
+function Sidebar({ setShowSidebar, sidebarRef, showSidebar }) {
   const sidebarData = [
     {
       title: "Home",
@@ -32,7 +32,9 @@ function Sidebar({ setShowSidebar, sidebarRef }) {
   return (
     <div
       ref={sidebarRef}
-      className="absolute w-[250px] border-l-2 md:hidden right-0 top-0 z-10 bg-white h-[100vh]"
+      className={`fixed top-0 left-0 h-full w-64 bg-gray-100 shadow-lg z-10 transform transition-transform duration-300 ${
+        showSidebar ? "translate-x-0" : "-translate-x-full"
+      }`}
     >
       <button
         className="md:hidden right-3 top-2 absolute"
@@ -47,7 +49,7 @@ function Sidebar({ setShowSidebar, sidebarRef }) {
           Spy World
         </h2>
 
-        <nav className="flex justify-center mt-10 p-2 w-full items-start">
+        <nav className="flex mt-10 p-2 w-full ">
           <ul className="flex flex-col gap-5 w-[100%]">
             {sidebarData.map((data) => (
               <NavLink
@@ -56,11 +58,13 @@ function Sidebar({ setShowSidebar, sidebarRef }) {
                 className={({ isActive }) =>
                   `${
                     isActive && "bg-slate-200"
-                  } hover:bg-slate-200 rounded-sm flex gap-2 w-[full] items-center justify-start p-2 font-semibold`
+                  } hover:bg-slate-200 rounded-sm flex  gap-2 w-[full] justify-center items-center p-2 font-semibold`
                 }
               >
-                {data.icon}
-                {data.title}
+                <span className="flex items-center gap-4 justify-start w-[60%] m-auto">
+                  {data.icon}
+                  {data.title}
+                </span>
               </NavLink>
             ))}
           </ul>
@@ -72,6 +76,7 @@ function Sidebar({ setShowSidebar, sidebarRef }) {
 
 Sidebar.propTypes = {
   setShowSidebar: Proptype.func,
+  showSidebar: Proptype.bool,
   sidebarRef: Proptype.oneOfType([Proptype.func, Proptype.object]),
 };
 
