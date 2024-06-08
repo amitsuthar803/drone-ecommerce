@@ -125,11 +125,11 @@ function Product() {
               <span
                 key={cate}
                 onClick={() => setSelectedCategory(cate)}
-                className={`px-[10px] cursor-pointer capitalize max-sm:text-sm py-[1px] rounded-full border-gray-300
+                className={`px-[10px] cursor-pointer capitalize max-sm:text-sm py-[1px] rounded-full border-2
                   ${
                     selectedCategory === cate
-                      ? "bg-black text-white  border-black border-2"
-                      : " hover:border-black active:border-black active:border-2 hover:text-white hover:bg-black border-2 "
+                      ? "bg-black text-white border-black"
+                      : " hover:border-black active:border-black  hover:text-white hover:bg-black "
                   }
                   `}
               >
