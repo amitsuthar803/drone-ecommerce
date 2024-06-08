@@ -1,11 +1,38 @@
 import Proptype from "prop-types";
+import { BiSolidUserDetail } from "react-icons/bi";
+import { IoHomeOutline } from "react-icons/io5";
+import { RiRobotFill, RiShoppingBasketLine } from "react-icons/ri";
 import { RxCross2 } from "react-icons/rx";
+import { NavLink } from "react-router-dom";
 
 function Sidebar({ setShowSidebar, sidebarRef }) {
+  const sidebarData = [
+    {
+      title: "Home",
+      icon: <IoHomeOutline />,
+      to: "/",
+    },
+    {
+      title: "Shop",
+      icon: <RiShoppingBasketLine />,
+      to: "shop",
+    },
+    {
+      title: "About",
+      icon: <BiSolidUserDetail />,
+      to: "about",
+    },
+    {
+      title: "Contact Us",
+      icon: <BiSolidUserDetail />,
+      to: "contact",
+    },
+  ];
+
   return (
     <div
       ref={sidebarRef}
-      className="absolute w-[250px] md:hidden right-0 top-0 z-10 bg-white h-[100vh]"
+      className="absolute w-[250px] border-l-2 md:hidden right-0 top-0 z-10 bg-white h-[100vh]"
     >
       <button
         className="md:hidden right-3 top-2 absolute"
@@ -13,6 +40,32 @@ function Sidebar({ setShowSidebar, sidebarRef }) {
       >
         <RxCross2 size={20} />
       </button>
+
+      <div className=" justify-start mt-[6rem] items-center w-full flex flex-col h-full">
+        <h2 className="flex items-center gap-2 border-2 p-2">
+          <RiRobotFill size={20} />
+          Spy World
+        </h2>
+
+        <nav className="flex justify-center mt-10 p-2 w-full items-start">
+          <ul className="flex flex-col gap-5 w-[100%]">
+            {sidebarData.map((data) => (
+              <NavLink
+                to={data.to}
+                key={data.title}
+                className={({ isActive }) =>
+                  `${
+                    isActive && "bg-slate-200"
+                  } hover:bg-slate-200 rounded-sm flex gap-2 w-[full] items-center justify-start p-2 font-semibold`
+                }
+              >
+                {data.icon}
+                {data.title}
+              </NavLink>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 }
