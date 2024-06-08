@@ -17,55 +17,55 @@ function Product() {
   const droneImages = [
     {
       name: "drone1",
-      path: "/assets/drone1.png",
+      path: "./assets/drone1.png",
       price: 999,
       type: "fun",
     },
     {
       name: "drone2",
-      path: "/assets/drone2.png",
+      path: "./assets/drone2.png",
       price: 999,
       type: "industrial",
     },
     {
       name: "drone3",
-      path: "/assets/drone3.png",
+      path: "./assets/drone3.png",
       price: 999,
       type: "camera",
     },
     {
       name: "drone4",
-      path: "/assets/drone4.png",
+      path: "./assets/drone4.png",
       price: 999,
       type: "camera",
     },
     {
       name: "drone5",
-      path: "/assets/drone5.png",
+      path: "./assets/drone5.png",
       price: 999,
       type: "agri",
     },
     {
       name: "drone6",
-      path: "/assets/drone6.png",
+      path: "./assets/drone6.png",
       price: 999,
       type: "agri",
     },
     {
       name: "drone7",
-      path: "/assets/drone7.png",
+      path: "./assets/drone7.png",
       price: 999,
       type: "underwater",
     },
     {
       name: "drone8",
-      path: "/assets/drone8.png",
+      path: "./assets/drone8.png",
       price: 999,
       type: "racing",
     },
     {
       name: "drone9",
-      path: "/assets/drone9.png",
+      path: "./assets/drone9.png",
       price: 999,
       type: "industrial",
     },
@@ -115,7 +115,7 @@ function Product() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 mt-10 p-2 gap-5 overflow-y-scroll">
+        <div className="grid grid-cols-2 md:grid-cols-3  mt-10 p-2 gap-5 overflow-y-scroll">
           {filterDrones.map((drone) => (
             <div
               key={drone.name}
