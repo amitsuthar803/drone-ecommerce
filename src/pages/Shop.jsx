@@ -1,5 +1,14 @@
 import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import drone1 from "../../assets/drone1.png";
+import drone2 from "../../assets/drone2.png";
+import drone3 from "../../assets/drone3.png";
+import drone4 from "../../assets/drone4.png";
+import drone5 from "../../assets/drone5.png";
+import drone6 from "../../assets/drone6.png";
+import drone7 from "../../assets/drone7.png";
+import drone8 from "../../assets/drone8.png";
+import drone9 from "../../assets/drone9.png";
 
 function Product() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -17,55 +26,55 @@ function Product() {
   const droneImages = [
     {
       name: "drone1",
-      path: "./assets/drone1.png",
+      path: drone1,
       price: 999,
       type: "fun",
     },
     {
       name: "drone2",
-      path: "./assets/drone2.png",
+      path: drone2,
       price: 999,
       type: "industrial",
     },
     {
       name: "drone3",
-      path: "./assets/drone3.png",
+      path: drone3,
       price: 999,
       type: "camera",
     },
     {
       name: "drone4",
-      path: "./assets/drone4.png",
+      path: drone4,
       price: 999,
       type: "camera",
     },
     {
       name: "drone5",
-      path: "./assets/drone5.png",
+      path: drone5,
       price: 999,
       type: "agri",
     },
     {
       name: "drone6",
-      path: "./assets/drone6.png",
+      path: drone6,
       price: 999,
       type: "agri",
     },
     {
       name: "drone7",
-      path: "./assets/drone7.png",
+      path: drone7,
       price: 999,
       type: "underwater",
     },
     {
       name: "drone8",
-      path: "./assets/drone8.png",
+      path: drone8,
       price: 999,
       type: "racing",
     },
     {
       name: "drone9",
-      path: "./assets/drone9.png",
+      path: drone9,
       price: 999,
       type: "industrial",
     },
@@ -122,7 +131,7 @@ function Product() {
               className="m-auto p-3 rounded-md bg-gray-100 flex flex-col"
             >
               <div className="py-5 rounded-md bg-white">
-                <img className="w-[250px] " src={`${drone.path}`} alt="" />
+                <img className="w-[250px] " src={drone.path} alt="" />
               </div>
               <div>
                 <h3>{drone.name}</h3>
