@@ -28,10 +28,31 @@ function Header({ setShowSidebar }) {
           Spy World
         </h2>
 
-        <nav className="  gap-4 max-md:hidden  flex-row  flex items-center ">
-          <NavLink to="/shop">Shop</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact Us</NavLink>
+        <nav className="  gap-4 max-sm:hidden  flex-row  flex items-center ">
+          <NavLink
+            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            to="shop"
+          >
+            Shop
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            to="about"
+          >
+            About
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            to="contact"
+          >
+            Contact Us
+          </NavLink>
         </nav>
 
         <div className="flex items-center gap-4">
