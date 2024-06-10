@@ -3,13 +3,14 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import Modal from "../ui/Modal";
 
 import { useDroneData } from "../context/DroneContext";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiFillHeart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { PiHeartBold } from "react-icons/pi";
 
 function Shop() {
   const [showModal, setShowModal] = useState(false);
+  const [wishList, setWishlist] = useState([]);
 
   const {
     selectedCategory,
@@ -34,6 +35,16 @@ function Shop() {
 
   const handleViewDetails = (id) => {
     navigate(`/product/${id}`);
+  };
+
+  const toggleWishlist = (drone) => {
+    if (wishList.includes(drone.id)) {
+      // If already in wishlist, remove it
+      setWishlist(wishList.filter((itemId) => itemId !== drone.id));
+    } else {
+      // If not in wishlist, add it
+      setWishlist([...wishList, drone.id]);
+    }
   };
 
   return (
@@ -83,10 +94,11 @@ function Shop() {
             >
               <div className="py-5 relative rounded-md bg-white">
                 <img className="w-[250px] " src={drone.path} alt="" />
-                <span className="absolute  top-2 left-2  bg-slate-100 p-1 rounded-full">
+                <span className="absolute  top-2 left-2  bg-[#8a8a8a23] p-1 rounded-full">
                   <AiOutlineEye
                     onClick={() => handleSelect(drone)}
-                    className=" cursor-pointer "
+                    className=" cursor-pointer"
+                    size={20}
                   />
                 </span>
               </div>
@@ -97,7 +109,19 @@ function Shop() {
                     <span>Price: ₹{drone.price}</span>
                   </div>
                   <div>
-                    <PiHeartBold />
+                    {wishList.includes(drone.id) ? (
+                      <AiFillHeart
+                        onClick={() => toggleWishlist(drone)}
+                        className=" cursor-pointer text-red-500"
+                        size={18}
+                      />
+                    ) : (
+                      <AiOutlineHeart
+                        onClick={() => toggleWishlist(drone)}
+                        className=" cursor-pointer text-red-500"
+                        size={18}
+                      />
+                    )}
                   </div>
                 </div>
 

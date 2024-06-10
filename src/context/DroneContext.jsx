@@ -46,7 +46,9 @@ function DroneProvider({ children }) {
       name: "Task Tracker",
       path: drone2,
       price: 999,
-      type: "Stay ahead of the competition with this versatile drone, equipped with advanced features for monitoring, surveillance, and remote sensing applications.",
+      type: "industrial",
+      description:
+        "Stay ahead of the competition with this versatile drone, equipped with advanced features for monitoring, surveillance, and remote sensing applications.",
     },
     {
       id: 2,
@@ -106,8 +108,10 @@ function DroneProvider({ children }) {
       id: 8,
       name: "Heavy Hauler",
       path: drone9,
+      type: "industrial",
       price: 999,
-      type: "Take on the toughest challenges with this heavy-lifting drone, built for industrial operations that demand strength, durability, and reliability.",
+      description:
+        "Take on the toughest challenges with this heavy-lifting drone, built for industrial operations that demand strength, durability, and reliability.",
     },
     {
       id: 9,
