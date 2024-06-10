@@ -1,4 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  ScrollRestoration,
+} from "react-router-dom";
 import "./App.css";
 import AppLayout from "./ui/AppLayout";
 import Home from "./pages/Home";
@@ -10,6 +15,7 @@ import About from "./pages/About";
 function App() {
   return (
     <BrowserRouter>
+      <ScrollRestoration />
       <Routes>
         <Route element={<AppLayout />}>
           <Route index element={<Home />} />
