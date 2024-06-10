@@ -16,18 +16,18 @@ import drone11 from "../../assets/drone11.png";
 const DroneContext = createContext();
 
 function DroneProvider({ children }) {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const [selectedDrone, setSelectedDrone] = useState({});
 
   const category = [
-    "all",
-    "fun",
-    "agri",
-    "industrial",
-    "camera",
-    "racing",
-    "underwater",
+    "All",
+    "Fun",
+    "Agri",
+    "Industrial",
+    "Camera",
+    "Racing",
+    "Underwater",
     "Li-dar",
   ];
 
@@ -37,7 +37,7 @@ function DroneProvider({ children }) {
       name: "Glide Guardian",
       path: drone1,
       price: 999,
-      type: "fun",
+      type: "Fun",
       description:
         " Find peace and serenity in the skies with this stable and reliable drone, offering smooth and steady flights for pilots of all skill levels.",
     },
@@ -46,7 +46,7 @@ function DroneProvider({ children }) {
       name: "Task Tracker",
       path: drone2,
       price: 999,
-      type: "industrial",
+      type: "Industrial",
       description:
         "Stay ahead of the competition with this versatile drone, equipped with advanced features for monitoring, surveillance, and remote sensing applications.",
     },
@@ -55,7 +55,7 @@ function DroneProvider({ children }) {
       name: "Pixel Pilot",
       path: drone3,
       price: 999,
-      type: "camera",
+      type: "Camera",
       description:
         "Take control of your aerial photography with this intuitive and customizable drone, empowering you to capture stunning images and videos with ease.",
     },
@@ -64,7 +64,7 @@ function DroneProvider({ children }) {
       name: "Lens Lifter",
       path: drone4,
       price: 999,
-      type: "camera",
+      type: "Camera",
       description:
         "Elevate your photography to new heights with this drone, equipped with a high-quality camera and advanced imaging capabilities for stunning aerial shots.",
     },
@@ -73,7 +73,7 @@ function DroneProvider({ children }) {
       name: "Crop Cruiser",
       path: drone5,
       price: 999,
-      type: "agri",
+      type: "Agri",
       description:
         "Navigate fields and farmlands with confidence using this specialized agricultural drone, equipped with sensors and imaging technology for crop monitoring and management.",
     },
@@ -82,7 +82,7 @@ function DroneProvider({ children }) {
       name: "Harvest Hawk",
       path: drone6,
       price: 999,
-      type: "agri",
+      type: "Agri",
       description:
         "Boost productivity and yield with this drone, capable of conducting aerial surveys, spraying pesticides, and assisting in crop management tasks.",
     },
@@ -91,7 +91,7 @@ function DroneProvider({ children }) {
       name: "Marine Maverick",
       path: drone7,
       price: 999,
-      type: "underwater",
+      type: "Underwater",
       description:
         "Navigate rivers, lakes, and coastal waters with this agile and versatile underwater drone, perfect for marine biologists, underwater archaeologists, and hobbyists alike.",
     },
@@ -100,7 +100,7 @@ function DroneProvider({ children }) {
       name: "Velocity Voyager",
       path: drone8,
       price: 999,
-      type: "racing",
+      type: "Racing",
       description:
         "Embark on epic racing adventures with this agile and aerodynamic drone, capable of reaching blistering speeds and navigating tight turns with precision.",
     },
@@ -108,7 +108,7 @@ function DroneProvider({ children }) {
       id: 8,
       name: "Heavy Hauler",
       path: drone9,
-      type: "industrial",
+      type: "Industrial",
       price: 999,
       description:
         "Take on the toughest challenges with this heavy-lifting drone, built for industrial operations that demand strength, durability, and reliability.",
@@ -127,7 +127,7 @@ function DroneProvider({ children }) {
       name: "ZoomZap Flyer",
       path: drone11,
       price: 999,
-      type: "fun",
+      type: "Fun",
       description:
         "Feel the thrill of high-speed flights and exhilarating aerial maneuvers with this fun-loving drone designed for recreational pilots.",
     },

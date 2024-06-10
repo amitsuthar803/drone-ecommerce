@@ -6,7 +6,8 @@ import { useDroneData } from "../context/DroneContext";
 import { AiFillHeart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { PiHeartBold } from "react-icons/pi";
+import { LuDot } from "react-icons/lu";
+import { GoDotFill } from "react-icons/go";
 
 function Shop() {
   const [showModal, setShowModal] = useState(false);
@@ -23,7 +24,7 @@ function Shop() {
   const navigate = useNavigate();
 
   const filterDrones =
-    selectedCategory === "all"
+    selectedCategory === "All"
       ? dronesData
       : dronesData.filter((drone) => drone.type === selectedCategory);
 
@@ -33,16 +34,22 @@ function Shop() {
     console.log(drone);
   };
 
-  const getBorderStyle = (type) => {
+  const badgeColor = (type) => {
     switch (type) {
-      case "underwater":
-        return "border-blue-500";
-      case "fun":
-        return "border-pink-500";
-      case "industrial":
-        return "border-gray-500";
-      case "agri":
-        return "border-green-500";
+      case "Underwater":
+        return "bg-[#0080a721] text-[#0081a7]";
+      case "Fun":
+        return "bg-[#ef233b1d] text-[#ef233c]";
+      case "Industrial":
+        return "bg-[#ffb9082f] text-[#ee9b00]";
+      case "Agri":
+        return "bg-[#57cc9924] text-[#43aa8b]";
+      case "Li-dar":
+        return "bg-[#90a95534] text-[#31572c]";
+      case "Camera":
+        return "bg-[#e4e4e4] text-[#1C2C42]";
+      case "Racing":
+        return "bg-[#1c2c4218] text-[#bf0603]";
       default:
         return ""; // Default to no border
     }
@@ -108,7 +115,7 @@ function Shop() {
             >
               <div className="py-5 relative rounded-md bg-white">
                 <img className="w-[250px] " src={drone.path} alt="" />
-                <span className="absolute  top-2 left-2  bg-[#8a8a8a23] p-1 rounded-full">
+                <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#8a8a8a23] p-1 rounded-full">
                   <AiOutlineEye
                     onClick={() => handleSelect(drone)}
                     className=" cursor-pointer"
@@ -117,18 +124,14 @@ function Shop() {
                 </span>
               </div>
               <div>
-                <div className="flex items-center justify-between py-4">
-                  <div className="flex flex-col items-start">
-                    <h3>{drone.name}</h3>
-                    <span>Price: ₹{drone.price}</span>
-                  </div>
-
-                  <div className="flex flex-col items-center gap-2">
+                <div className="flex items-center gap-2 flex-col justify-between py-4">
+                  <div className="flex items-center justify-between w-full">
                     <span
-                      className={`text-sm border-2  ${getBorderStyle(
+                      className={`lg:text-[12px] flex items-center justify-start gap-1  ${badgeColor(
                         drone.type
-                      )} rounded-full px-2`}
+                      )} rounded-full text-[10px] px-2`}
                     >
+                      <GoDotFill />
                       {drone.type}
                     </span>
                     {wishList.includes(drone.id) ? (
@@ -144,6 +147,11 @@ function Shop() {
                         size={18}
                       />
                     )}
+                  </div>
+
+                  <div className="flex flex-col w-full  items-start">
+                    <h3>{drone.name}</h3>
+                    <span>Price: ₹{drone.price}</span>
                   </div>
                 </div>
 
