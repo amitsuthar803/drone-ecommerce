@@ -5,9 +5,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import {
   PiBoxArrowDownBold,
+  PiHeartStraightBold,
   PiShoppingCartBold,
   PiUserBold,
 } from "react-icons/pi";
+import { HiOutlineHeart } from "react-icons/hi";
 
 function Header({ setShowSidebar }) {
   const navigate = useNavigate();
@@ -63,7 +65,7 @@ function Header({ setShowSidebar }) {
         <div className="flex items-center gap-4">
           <FaSearch className=" cursor-pointer" />
           <PiUserBold className=" cursor-pointer" size={20} />
-          <PiBoxArrowDownBold className=" cursor-pointer" size={20} />
+          <PiHeartStraightBold className=" cursor-pointer" size={20} />
           <PiShoppingCartBold className=" cursor-pointer" size={20} />
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useDroneData } from "../context/DroneContext";
 import { AiOutlineEye } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { PiHeartBold } from "react-icons/pi";
 
 function Shop() {
   const [showModal, setShowModal] = useState(false);
@@ -90,8 +91,16 @@ function Shop() {
                 </span>
               </div>
               <div>
-                <h3>{drone.name}</h3>
-                <span>Price: {drone.price}</span>
+                <div className="flex items-center justify-between py-4">
+                  <div className="flex flex-col items-start">
+                    <h3>{drone.name}</h3>
+                    <span>Price: ₹{drone.price}</span>
+                  </div>
+                  <div>
+                    <PiHeartBold />
+                  </div>
+                </div>
+
                 <button
                   onClick={() => handleViewDetails(drone.id)}
                   className="flex items-center text-sm p-1 rounded-sm w-full bg-black text-white  justify-center"
