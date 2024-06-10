@@ -22,13 +22,8 @@ function Modal({ className, setShowModal }) {
           size={30}
           className=" cursor-pointer absolute top-2 right-2"
         />
-        <div>
-          <img src={selectedDrone.path} alt="" />
-        </div>
-        <div>
-          <span>Name: {selectedDrone.name}</span>
-          <span>Price: {selectedDrone.price}</span>
-        </div>
+
+        <img src={selectedDrone.path} alt="" />
       </div>
     </div>
   );

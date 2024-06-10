@@ -12,9 +12,8 @@ function AppLayout() {
 
   const handleClickOutside = (event) => {
     if (sidebarRef.current && sidebarRef.current.contains(event.target)) {
-      console.log("click inside");
+      return;
     } else {
-      console.log("click outiside");
       setShowSidebar(false);
     }
   };

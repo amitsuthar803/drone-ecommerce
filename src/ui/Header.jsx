@@ -4,12 +4,10 @@ import Proptype from "prop-types";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import {
-  PiBoxArrowDownBold,
   PiHeartStraightBold,
   PiShoppingCartBold,
   PiUserBold,
 } from "react-icons/pi";
-import { HiOutlineHeart } from "react-icons/hi";
 
 function Header({ setShowSidebar }) {
   const navigate = useNavigate();

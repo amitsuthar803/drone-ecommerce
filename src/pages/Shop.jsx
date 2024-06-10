@@ -33,6 +33,20 @@ function Shop() {
     console.log(drone);
   };
 
+  const getBorderStyle = (type) => {
+    switch (type) {
+      case "underwater":
+        return "border-blue-500";
+      case "fun":
+        return "border-pink-500";
+      case "industrial":
+        return "border-gray-500";
+      case "agri":
+        return "border-green-500";
+      default:
+        return ""; // Default to no border
+    }
+  };
   const handleViewDetails = (id) => {
     navigate(`/product/${id}`);
   };
@@ -108,7 +122,15 @@ function Shop() {
                     <h3>{drone.name}</h3>
                     <span>Price: ₹{drone.price}</span>
                   </div>
-                  <div>
+
+                  <div className="flex flex-col items-center gap-2">
+                    <span
+                      className={`text-sm border-2  ${getBorderStyle(
+                        drone.type
+                      )} rounded-full px-2`}
+                    >
+                      {drone.type}
+                    </span>
                     {wishList.includes(drone.id) ? (
                       <AiFillHeart
                         onClick={() => toggleWishlist(drone)}
