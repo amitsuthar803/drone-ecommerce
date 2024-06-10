@@ -6,8 +6,11 @@ import Courier from "../../assets/courier.png";
 import Racing from "../../assets/racing.png";
 import Construction from "../../assets/construction.png";
 import Videography from "../../assets/video.png";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <>
       <section className="w-full flex-col flex">
@@ -23,7 +26,10 @@ function Home() {
               printing machines.
             </p>
 
-            <button className="flex items-center transition-all  hover:translate-y-[-2px]  mt-3 bg-white text-black lg:bg-black lg:text-white px-3 py-2 gap-2 active:translate-y-[1px] shadow-lg  lg:shadow-slate-400">
+            <button
+              onClick={() => navigate("/shop")}
+              className="flex items-center transition-all  hover:translate-y-[-2px]  mt-3 bg-white text-black lg:bg-black lg:text-white px-3 py-2 gap-2 active:translate-y-[1px] shadow-lg  lg:shadow-slate-400"
+            >
               Discover Our Collection
               <TbDrone />
             </button>

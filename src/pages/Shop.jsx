@@ -6,7 +6,6 @@ import { useDroneData } from "../context/DroneContext";
 import { AiFillHeart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
-import { LuDot } from "react-icons/lu";
 import { GoDotFill } from "react-icons/go";
 
 function Shop() {
