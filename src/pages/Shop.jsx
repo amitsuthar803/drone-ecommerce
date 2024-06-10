@@ -111,7 +111,7 @@ function Shop() {
           {filterDrones.map((drone) => (
             <div
               key={drone.id}
-              className="m-auto  p-3 rounded-md bg-gray-100 flex flex-col"
+              className="m-auto max-sm:p-3 p-4 rounded-lg bg-[#EFEFF0] flex flex-col"
             >
               <div className="py-5 relative rounded-md bg-white">
                 <img className="w-[250px] " src={drone.path} alt="" />
@@ -124,7 +124,7 @@ function Shop() {
                 </span>
               </div>
               <div>
-                <div className="flex items-center gap-2 flex-col justify-between py-4">
+                <div className="flex items-center gap-4 flex-col justify-between py-4">
                   <div className="flex items-center justify-between w-full">
                     <span
                       className={`lg:text-[12px] flex items-center justify-start gap-1  ${badgeColor(
@@ -150,16 +150,20 @@ function Shop() {
                   </div>
 
                   <div className="flex flex-col w-full  items-start">
-                    <h3>{drone.name}</h3>
-                    <span>Price: ₹{drone.price}</span>
+                    <h3 className="text-[#0D0D0D] font-semibold">
+                      {drone.name}
+                    </h3>
+                    <span className="text-[#2a9d8f] font-semibold">
+                      ₹{drone.price}
+                    </span>
                   </div>
                 </div>
 
                 <button
                   onClick={() => handleViewDetails(drone.id)}
-                  className="flex items-center text-sm p-1 rounded-sm w-full bg-black text-white  justify-center"
+                  className="flex items-center capitalize font-semibold text-[.7rem] lg:text-[.8rem] gap-2  py-2 rounded-lg w-full bg-black text-white  justify-center"
                 >
-                  <IoCartOutline />
+                  <IoCartOutline size={16} />
                   Add to cart
                 </button>
               </div>
