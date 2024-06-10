@@ -12,8 +12,8 @@ function ProductDetail() {
   const [selectProduct] = dronesData.filter((drone) => drone.id === Number(id));
 
   return (
-    <div className="flex w-full justify-between lg:mt-10 max-sm:flex-col lg:items-center">
-      <div className="flex-1 max-sm:rounded-t-[20px]  flex justify-center max-sm:items-start max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
+    <div className="flex w-full justify-between h-[80vh]  max-sm:flex-col lg:items-center">
+      <div className="flex-1 max-sm:rounded-t-[20px]  flex justify-center max-sm:items-center max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
         <img src={selectProduct.path} alt="" />
       </div>
 
