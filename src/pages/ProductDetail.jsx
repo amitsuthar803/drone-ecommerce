@@ -71,12 +71,12 @@ function ProductDetail() {
             {selectProduct.wishlist ? (
               <AiFillHeart
                 key={selectProduct.id}
-                className=" cursor-pointer max:sm-text-[20px] text-[22px] text-red-500"
+                className=" cursor-pointer lg:text-[22px] text-[20px] text-red-500"
               />
             ) : (
               <AiOutlineHeart
                 key={selectProduct.id}
-                className=" cursor-pointer max:sm-text-[20px] text-[22px] text-red-500"
+                className=" cursor-pointer lg:text-[22px] text-[20px] text-red-500"
               />
             )}
           </button>
