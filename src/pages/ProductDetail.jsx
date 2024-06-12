@@ -1,25 +1,31 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDroneData } from "../context/DroneContext";
 import { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 function ProductDetail() {
   const { id } = useParams();
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   const { dronesData, handleWishList } = useDroneData();
 
   const [selectProduct] = dronesData.filter((drone) => drone.id === Number(id));
 
   return (
-    <div className="flex w-full lg:mt-[3rem] justify-between h-[100vh]  max-sm:flex-col lg:items-start">
-      <div className="flex-1 max-sm:rounded-t-[20px]  flex justify-center max-sm:items-center max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
+    <div className="flex w-full lg:mt-[3rem] justify-between h-[100vh] gap-10  max-sm:flex-col lg:items-start">
+      <div className="flex-1 relative max-sm:rounded-t-[20px]  flex justify-center max-sm:items-center max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
         <img
-          className="lg:h-[100%] md:h-[60%] sm:h-[50%]"
+          className="lg:h-[100%] md:h-[60%] sm:h-[40%]"
           src={selectProduct.path}
           alt=""
+        />
+        <IoIosArrowRoundBack
+          onClick={() => navigate("/shop")}
+          className=" absolute md:text-slate-400 md:hover:bg-slate-400 md:hover:bg-opacity-20 cursor-pointer  hover:bg-slate-100 hover:bg-opacity-20 left-4 top-4 text-[22px] rounded-full h-[25px] w-[25px] "
         />
       </div>
 
@@ -59,14 +65,14 @@ function ProductDetail() {
           <p className="text-gray-500">{selectProduct.description}</p>
         </div>
 
-        <div className="flex items-center gap-5 mt-4  justify-center">
-          <button className="bg-black border-none max-sm:px-2 max-sm:text-sm  px-4  h-10 border-2  max-sm:h-8   gap-2 max-sm:text-center justify-center text-white flex items-center  rounded-sm">
+        <div className="flex items-center gap-5 mt-4 max-sm:justify-center  justify-start">
+          <button className="bg-black border-none max-md:px-2 max-sm:text-sm  px-4  h-10 border-2  max-md:h-8   gap-2 max-sm:text-center justify-center text-white flex items-center  rounded-sm">
             <IoCartOutline size={16} />
             Add To Cart
           </button>
           <button
             onClick={() => handleWishList(selectProduct.id)}
-            className="max-sm:px-2  px-4  h-10 border-2  max-sm:h-8  border-gray-300 rounded-sm "
+            className="max-md:px-2  px-4  h-10 border-2  max-md:h-8  border-gray-300 rounded-sm "
           >
             {selectProduct.wishlist ? (
               <AiFillHeart
