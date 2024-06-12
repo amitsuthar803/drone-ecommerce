@@ -11,7 +11,14 @@ function ProductDetail() {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
-  const { dronesData, handleWishList } = useDroneData();
+  const { dronesData, user, updateCart, currentUser, updateWishlist } =
+    useDroneData();
+
+  const currentUserData = user.find((u) => u.id === currentUser.id);
+
+  const isInWishlist = (productId) => {
+    return currentUserData?.wishlistItems.includes(productId);
+  };
 
   const [selectProduct] = dronesData.filter((drone) => drone.id === Number(id));
 
@@ -66,15 +73,18 @@ function ProductDetail() {
         </div>
 
         <div className="flex items-center gap-5 mt-4 max-sm:justify-center  justify-start">
-          <button className="bg-black border-none max-md:px-2 max-sm:text-sm  px-4  h-10 border-2  max-md:h-8   gap-2 max-sm:text-center justify-center text-white flex items-center  rounded-sm">
+          <button
+            onClick={() => updateCart(selectProduct.id, "add")}
+            className="bg-black border-none max-md:px-2 max-sm:text-sm  px-4  h-10 border-2  max-md:h-8   gap-2 max-sm:text-center justify-center text-white flex items-center  rounded-sm"
+          >
             <IoCartOutline size={16} />
             Add To Cart
           </button>
           <button
-            onClick={() => handleWishList(selectProduct.id)}
+            onClick={() => updateWishlist(selectProduct.id, "add")}
             className="max-md:px-2  px-4  h-10 border-2  max-md:h-8  border-gray-300 rounded-sm "
           >
-            {selectProduct.wishlist ? (
+            {isInWishlist(selectProduct.id) ? (
               <AiFillHeart
                 key={selectProduct.id}
                 className=" cursor-pointer lg:text-[22px] text-[20px] text-red-500"

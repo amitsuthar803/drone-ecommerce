@@ -8,9 +8,16 @@ import {
   PiShoppingCartBold,
   PiUserBold,
 } from "react-icons/pi";
+import { useDroneData } from "../context/DroneContext";
 
 function Header({ setShowSidebar }) {
+  const { user, currentUser } = useDroneData();
+
   const navigate = useNavigate();
+
+  const currentUserData = user.find((u) => u.id === currentUser.id);
+
+ 
 
   const handleHamburgerClick = (event) => {
     event.stopPropagation(); // Stop the event from propagating to the document
@@ -67,14 +74,14 @@ function Header({ setShowSidebar }) {
           <div className="relative">
             <PiHeartStraightBold className=" z-10 cursor-pointer" size={20} />
             <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-red-600 px-[4px] rounded-full z-30">
-              0
+              {currentUserData?.wishlistItems.length}
             </span>
           </div>
 
           <div className="relative">
             <PiShoppingCartBold className=" z-10 cursor-pointer" size={20} />
-            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-black px-[4px] rounded-full z-30">
-              0
+            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-black px-1.5 rounded-full z-30">
+              {currentUserData?.cartItems.length}
             </span>
           </div>
         </div>

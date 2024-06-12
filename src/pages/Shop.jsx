@@ -10,7 +10,6 @@ import { GoDotFill } from "react-icons/go";
 
 function Shop() {
   const [showModal, setShowModal] = useState(false);
-  const [wishList, setWishlist] = useState([]);
 
   const {
     selectedCategory,
@@ -19,6 +18,8 @@ function Shop() {
     setSelectedCategory,
     category,
     handleWishList,
+    user,
+    currentUser,
   } = useDroneData();
 
   const navigate = useNavigate();
@@ -32,6 +33,13 @@ function Shop() {
     setSelectedDrone(drone);
     setShowModal(true);
     console.log(drone);
+  };
+
+  const currentUserData = user.find((u) => u.id === currentUser.id);
+ 
+
+  const isInWishlist = (productId) => {
+    return currentUserData?.wishlistItems.includes(productId);
   };
 
   const badgeColor = (type) => {
@@ -125,7 +133,7 @@ function Shop() {
                       {drone.type}
                     </span>
 
-                    {drone.wishlist ? (
+                    {isInWishlist(drone.id) ? (
                       <AiFillHeart
                         onClick={() => handleWishList(drone.id)}
                         className=" cursor-pointer text-red-500"
