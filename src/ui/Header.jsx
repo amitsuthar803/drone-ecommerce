@@ -64,7 +64,12 @@ function Header({ setShowSidebar }) {
           <FaSearch className=" cursor-pointer" />
           <PiUserBold className=" cursor-pointer" size={20} />
           <PiHeartStraightBold className=" cursor-pointer" size={20} />
-          <PiShoppingCartBold className=" cursor-pointer" size={20} />
+          <div className="relative">
+            <PiShoppingCartBold className=" z-10 cursor-pointer" size={20} />
+            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-black px-[4px] rounded-full z-30">
+              0
+            </span>
+          </div>
         </div>
       </div>
     </header>
