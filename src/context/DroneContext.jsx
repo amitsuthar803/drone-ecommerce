@@ -19,6 +19,118 @@ function DroneProvider({ children }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const [selectedDrone, setSelectedDrone] = useState({});
+  const [dronesData, setDronesData] = useState([
+    {
+      id: 0,
+      wishlist: true,
+      name: "Glide Guardian",
+      path: drone1,
+      price: 999,
+      type: "Fun",
+      description:
+        " Find peace and serenity in the skies with this stable and reliable drone, offering smooth and steady flights for pilots of all skill levels.",
+    },
+    {
+      id: 1,
+      name: "Task Tracker",
+      path: drone2,
+      wishlist: false,
+      price: 999,
+      type: "Industrial",
+      description:
+        "Stay ahead of the competition with this versatile drone, equipped with advanced features for monitoring, surveillance, and remote sensing applications.",
+    },
+    {
+      id: 2,
+      name: "Pixel Pilot",
+      path: drone3,
+      wishlist: false,
+      price: 999,
+      type: "Camera",
+      description:
+        "Take control of your aerial photography with this intuitive and customizable drone, empowering you to capture stunning images and videos with ease.",
+    },
+    {
+      id: 3,
+      name: "Lens Lifter",
+      path: drone4,
+      wishlist: false,
+      price: 999,
+      type: "Camera",
+      description:
+        "Elevate your photography to new heights with this drone, equipped with a high-quality camera and advanced imaging capabilities for stunning aerial shots.",
+    },
+    {
+      id: 4,
+      name: "Crop Cruiser",
+      path: drone5,
+      wishlist: false,
+      price: 999,
+      type: "Agri",
+      description:
+        "Navigate fields and farmlands with confidence using this specialized agricultural drone, equipped with sensors and imaging technology for crop monitoring and management.",
+    },
+    {
+      id: 5,
+      name: "Harvest Hawk",
+      path: drone6,
+      wishlist: false,
+      price: 999,
+      type: "Agri",
+      description:
+        "Boost productivity and yield with this drone, capable of conducting aerial surveys, spraying pesticides, and assisting in crop management tasks.",
+    },
+    {
+      id: 6,
+      name: "Marine Maverick",
+      path: drone7,
+      wishlist: false,
+      price: 999,
+      type: "Underwater",
+      description:
+        "Navigate rivers, lakes, and coastal waters with this agile and versatile underwater drone, perfect for marine biologists, underwater archaeologists, and hobbyists alike.",
+    },
+    {
+      id: 7,
+      name: "Velocity Voyager",
+      path: drone8,
+      wishlist: false,
+      price: 999,
+      type: "Racing",
+      description:
+        "Embark on epic racing adventures with this agile and aerodynamic drone, capable of reaching blistering speeds and navigating tight turns with precision.",
+    },
+    {
+      id: 8,
+      name: "Heavy Hauler",
+      path: drone9,
+      wishlist: false,
+      type: "Industrial",
+      price: 999,
+      description:
+        "Take on the toughest challenges with this heavy-lifting drone, built for industrial operations that demand strength, durability, and reliability.",
+    },
+    {
+      id: 9,
+      name: "GeoMapper Pro",
+      path: drone10,
+      wishlist: false,
+      price: 999,
+      type: "Li-dar",
+      description:
+        "The GeoMapper Pro is a cutting-edge LiDAR drone engineered for high-precision mapping and surveying applications. Equipped with advanced LiDAR technology, it delivers accurate 3D models of terrain, structures, and environments, making it an indispensable tool for professionals in industries such as agriculture, construction, and urban planning.",
+    },
+    {
+      id: 10,
+      name: "ZoomZap Flyer",
+      path: drone11,
+      wishlist: false,
+      price: 999,
+      type: "Fun",
+      description:
+        "Feel the thrill of high-speed flights and exhilarating aerial maneuvers with this fun-loving drone designed for recreational pilots.",
+    },
+  ]);
 
   const category = [
     "All",
@@ -31,107 +143,15 @@ function DroneProvider({ children }) {
     "Li-dar",
   ];
 
-  const dronesData = [
-    {
-      id: 0,
-      name: "Glide Guardian",
-      path: drone1,
-      price: 999,
-      type: "Fun",
-      description:
-        " Find peace and serenity in the skies with this stable and reliable drone, offering smooth and steady flights for pilots of all skill levels.",
-    },
-    {
-      id: 1,
-      name: "Task Tracker",
-      path: drone2,
-      price: 999,
-      type: "Industrial",
-      description:
-        "Stay ahead of the competition with this versatile drone, equipped with advanced features for monitoring, surveillance, and remote sensing applications.",
-    },
-    {
-      id: 2,
-      name: "Pixel Pilot",
-      path: drone3,
-      price: 999,
-      type: "Camera",
-      description:
-        "Take control of your aerial photography with this intuitive and customizable drone, empowering you to capture stunning images and videos with ease.",
-    },
-    {
-      id: 3,
-      name: "Lens Lifter",
-      path: drone4,
-      price: 999,
-      type: "Camera",
-      description:
-        "Elevate your photography to new heights with this drone, equipped with a high-quality camera and advanced imaging capabilities for stunning aerial shots.",
-    },
-    {
-      id: 4,
-      name: "Crop Cruiser",
-      path: drone5,
-      price: 999,
-      type: "Agri",
-      description:
-        "Navigate fields and farmlands with confidence using this specialized agricultural drone, equipped with sensors and imaging technology for crop monitoring and management.",
-    },
-    {
-      id: 5,
-      name: "Harvest Hawk",
-      path: drone6,
-      price: 999,
-      type: "Agri",
-      description:
-        "Boost productivity and yield with this drone, capable of conducting aerial surveys, spraying pesticides, and assisting in crop management tasks.",
-    },
-    {
-      id: 6,
-      name: "Marine Maverick",
-      path: drone7,
-      price: 999,
-      type: "Underwater",
-      description:
-        "Navigate rivers, lakes, and coastal waters with this agile and versatile underwater drone, perfect for marine biologists, underwater archaeologists, and hobbyists alike.",
-    },
-    {
-      id: 7,
-      name: "Velocity Voyager",
-      path: drone8,
-      price: 999,
-      type: "Racing",
-      description:
-        "Embark on epic racing adventures with this agile and aerodynamic drone, capable of reaching blistering speeds and navigating tight turns with precision.",
-    },
-    {
-      id: 8,
-      name: "Heavy Hauler",
-      path: drone9,
-      type: "Industrial",
-      price: 999,
-      description:
-        "Take on the toughest challenges with this heavy-lifting drone, built for industrial operations that demand strength, durability, and reliability.",
-    },
-    {
-      id: 9,
-      name: "GeoMapper Pro",
-      path: drone10,
-      price: 999,
-      type: "Li-dar",
-      description:
-        "The GeoMapper Pro is a cutting-edge LiDAR drone engineered for high-precision mapping and surveying applications. Equipped with advanced LiDAR technology, it delivers accurate 3D models of terrain, structures, and environments, making it an indispensable tool for professionals in industries such as agriculture, construction, and urban planning.",
-    },
-    {
-      id: 10,
-      name: "ZoomZap Flyer",
-      path: drone11,
-      price: 999,
-      type: "Fun",
-      description:
-        "Feel the thrill of high-speed flights and exhilarating aerial maneuvers with this fun-loving drone designed for recreational pilots.",
-    },
-  ];
+  const handleWishList = (id) => {
+    setDronesData((prevDroneData) =>
+      prevDroneData.map((drone) =>
+        drone.id === id ? { ...drone, wishlist: !drone.wishlist } : drone
+      )
+    );
+    console.log(id);
+  };
+
   return (
     <DroneContext.Provider
       value={{
@@ -141,6 +161,7 @@ function DroneProvider({ children }) {
         setSelectedDrone,
         category,
         dronesData,
+        handleWishList,
       }}
     >
       {children}

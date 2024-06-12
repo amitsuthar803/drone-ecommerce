@@ -18,6 +18,7 @@ function Shop() {
     setSelectedDrone,
     setSelectedCategory,
     category,
+    handleWishList,
   } = useDroneData();
 
   const navigate = useNavigate();
@@ -55,16 +56,6 @@ function Shop() {
   };
   const handleViewDetails = (id) => {
     navigate(`/product/${id}`);
-  };
-
-  const toggleWishlist = (drone) => {
-    if (wishList.includes(drone.id)) {
-      // If already in wishlist, remove it
-      setWishlist(wishList.filter((itemId) => itemId !== drone.id));
-    } else {
-      // If not in wishlist, add it
-      setWishlist([...wishList, drone.id]);
-    }
   };
 
   return (
@@ -128,20 +119,21 @@ function Shop() {
                     <span
                       className={`lg:text-[12px] flex items-center justify-start gap-1  ${badgeColor(
                         drone.type
-                      )} rounded-full text-[10px] px-2`}
+                      )} rounded-full text-[10px] px-1`}
                     >
                       <GoDotFill />
                       {drone.type}
                     </span>
-                    {wishList.includes(drone.id) ? (
+
+                    {drone.wishlist ? (
                       <AiFillHeart
-                        onClick={() => toggleWishlist(drone)}
+                        onClick={() => handleWishList(drone.id)}
                         className=" cursor-pointer text-red-500"
                         size={18}
                       />
                     ) : (
                       <AiOutlineHeart
-                        onClick={() => toggleWishlist(drone)}
+                        onClick={() => handleWishList(drone.id)}
                         className=" cursor-pointer text-red-500"
                         size={18}
                       />
@@ -149,10 +141,10 @@ function Shop() {
                   </div>
 
                   <div className="flex flex-col w-full  items-start">
-                    <h3 className="text-[#0D0D0D] font-semibold">
+                    <h3 className=" text-gray-800 max-sm:text-sm max-sm:font-normal font-semibold">
                       {drone.name}
                     </h3>
-                    <span className="text-[#2a9d8f] font-semibold">
+                    <span className=" text-black max-sm:text-sm max-sm:font-medium font-medium lg:text-green-600">
                       ₹{drone.price}
                     </span>
                   </div>
@@ -160,7 +152,7 @@ function Shop() {
 
                 <button
                   onClick={() => handleViewDetails(drone.id)}
-                  className="flex items-center capitalize font-semibold text-[.7rem] lg:text-[.8rem] gap-2  py-2 rounded-lg w-full bg-black text-white  justify-center"
+                  className="flex items-center capitalize font-semibold text-[.7rem] lg:text-[.8rem] gap-2  py-2 rounded-sm w-full bg-black text-white  justify-center"
                 >
                   <IoCartOutline size={16} />
                   Add to cart

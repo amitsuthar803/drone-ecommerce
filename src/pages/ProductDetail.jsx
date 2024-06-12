@@ -3,12 +3,13 @@ import { useDroneData } from "../context/DroneContext";
 import { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 function ProductDetail() {
   const { id } = useParams();
   const [count, setCount] = useState(0);
 
-  const { dronesData } = useDroneData();
+  const { dronesData, handleWishList } = useDroneData();
 
   const [selectProduct] = dronesData.filter((drone) => drone.id === Number(id));
 
@@ -58,10 +59,28 @@ function ProductDetail() {
           <p className="text-gray-500">{selectProduct.description}</p>
         </div>
 
-        <button className="bg-black mt-4 gap-2 max-sm:text-center justify-center text-white flex items-center px-4 py-2 rounded-sm">
-          <IoCartOutline size={16} />
-          Add To Cart
-        </button>
+        <div className="flex items-center gap-5 mt-4  justify-center">
+          <button className="bg-black border-none max-sm:px-2 max-sm:text-sm  px-4  h-10 border-2  max-sm:h-8   gap-2 max-sm:text-center justify-center text-white flex items-center  rounded-sm">
+            <IoCartOutline size={16} />
+            Add To Cart
+          </button>
+          <button
+            onClick={() => handleWishList(selectProduct.id)}
+            className="max-sm:px-2  px-4  h-10 border-2  max-sm:h-8  border-gray-300 rounded-sm "
+          >
+            {selectProduct.wishlist ? (
+              <AiFillHeart
+                key={selectProduct.id}
+                className=" cursor-pointer max:sm-text-[20px] text-[22px] text-red-500"
+              />
+            ) : (
+              <AiOutlineHeart
+                key={selectProduct.id}
+                className=" cursor-pointer max:sm-text-[20px] text-[22px] text-red-500"
+              />
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );
