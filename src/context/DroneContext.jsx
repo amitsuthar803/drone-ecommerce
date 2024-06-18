@@ -46,6 +46,7 @@ function DroneProvider({ children }) {
       path: drone1,
       price: 999,
       type: "Fun",
+      qty: 0,
       description:
         " Find peace and serenity in the skies with this stable and reliable drone, offering smooth and steady flights for pilots of all skill levels.",
     },
@@ -53,7 +54,7 @@ function DroneProvider({ children }) {
       id: 1,
       name: "Task Tracker",
       path: drone2,
-
+      qty: 0,
       price: 999,
       type: "Industrial",
       description:
@@ -63,7 +64,7 @@ function DroneProvider({ children }) {
       id: 2,
       name: "Pixel Pilot",
       path: drone3,
-
+      qty: 0,
       price: 999,
       type: "Camera",
       description:
@@ -73,7 +74,7 @@ function DroneProvider({ children }) {
       id: 3,
       name: "Lens Lifter",
       path: drone4,
-
+      qty: 0,
       price: 999,
       type: "Camera",
       description:
@@ -83,7 +84,7 @@ function DroneProvider({ children }) {
       id: 4,
       name: "Crop Cruiser",
       path: drone5,
-
+      qty: 0,
       price: 999,
       type: "Agri",
       description:
@@ -93,7 +94,7 @@ function DroneProvider({ children }) {
       id: 5,
       name: "Harvest Hawk",
       path: drone6,
-
+      qty: 0,
       price: 999,
       type: "Agri",
       description:
@@ -103,7 +104,7 @@ function DroneProvider({ children }) {
       id: 6,
       name: "Marine Maverick",
       path: drone7,
-
+      qty: 0,
       price: 999,
       type: "Underwater",
       description:
@@ -113,7 +114,7 @@ function DroneProvider({ children }) {
       id: 7,
       name: "Velocity Voyager",
       path: drone8,
-
+      qty: 0,
       price: 999,
       type: "Racing",
       description:
@@ -123,7 +124,7 @@ function DroneProvider({ children }) {
       id: 8,
       name: "Heavy Hauler",
       path: drone9,
-
+      qty: 0,
       type: "Industrial",
       price: 999,
       description:
@@ -133,7 +134,7 @@ function DroneProvider({ children }) {
       id: 9,
       name: "GeoMapper Pro",
       path: drone10,
-
+      qty: 0,
       price: 999,
       type: "Li-dar",
       description:
@@ -145,10 +146,14 @@ function DroneProvider({ children }) {
       path: drone11,
       price: 999,
       type: "Fun",
+      qty: 0,
       description:
         "Feel the thrill of high-speed flights and exhilarating aerial maneuvers with this fun-loving drone designed for recreational pilots.",
     },
   ]);
+
+  // dronesDataState is a dynamic state variable that can change during the application's lifecycle, reflecting the current state of the drones.
+  const [dronesDataState, setDronesDataState] = useState(dronesData);
 
   const category = [
     "All",
@@ -162,37 +167,92 @@ function DroneProvider({ children }) {
   ];
 
   // Function to update the cart for the current user
-  const updateCart = (productId, action) => {
+  const updateCart = (productId, action, qty = 1) => {
     if (currentUserId === null) return;
 
     const currentUser = users.find((user) => user.id === currentUserId);
     if (!currentUser) return;
 
-    const productInCart = currentUser.cartItems.some(
+    const productInCart = currentUser.cartItems.find(
       (item) => item.id === productId
     );
 
-    if (action === "add" && productInCart) {
-      alert("Item already added to the cart");
-      return;
-    }
+    if (action === "add") {
+      if (productInCart) {
+        if (productInCart.qty === qty) {
+          alert("Item already added to the cart with the same quantity");
+          return;
+        }
 
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.id === currentUser.id
-          ? {
-              ...user,
-              cartItems:
-                action === "add"
-                  ? [
-                      ...user.cartItems,
-                      dronesData.find((drone) => drone.id === productId),
-                    ]
-                  : user.cartItems.filter((item) => item.id !== productId),
-            }
-          : user
-      )
-    );
+        // Replace the quantity with the new quantity
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === currentUser.id
+              ? {
+                  ...user,
+                  cartItems: user.cartItems.map((item) =>
+                    item.id === productId ? { ...item, qty: qty } : item
+                  ),
+                }
+              : user
+          )
+        );
+
+        setDronesDataState((prevDronesData) =>
+          prevDronesData.map((drone) =>
+            drone.id === productId ? { ...drone, qty: qty } : drone
+          )
+        );
+        alert("Item quantity updated in the cart");
+      } else {
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === currentUser.id
+              ? {
+                  ...user,
+                  cartItems: [
+                    ...user.cartItems,
+                    {
+                      ...dronesDataState.find(
+                        (drone) => drone.id === productId
+                      ),
+                      qty: qty,
+                    },
+                  ],
+                }
+              : user
+          )
+        );
+
+        setDronesDataState((prevDronesData) =>
+          prevDronesData.map((drone) =>
+            drone.id === productId ? { ...drone, qty: drone.qty + qty } : drone
+          )
+        );
+        alert("Item added to the cart");
+      }
+    } else if (action === "remove") {
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user.id === currentUser.id
+            ? {
+                ...user,
+                cartItems: user.cartItems.filter(
+                  (item) => item.id !== productId
+                ),
+              }
+            : user
+        )
+      );
+
+      setDronesDataState((prevDronesData) =>
+        prevDronesData.map((drone) =>
+          drone.id === productId
+            ? { ...drone, qty: Math.max(drone.qty - qty, 0) }
+            : drone
+        )
+      );
+    }
   };
 
   const handleWishlist = (productId) => {
@@ -248,4 +308,5 @@ function useDroneData() {
   return context;
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { DroneProvider, useDroneData };

@@ -8,7 +8,8 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 
 function ProductDetail() {
   const { id } = useParams();
-  const [count, setCount] = useState(0);
+  const [qty, setQty] = useState(1);
+
   const navigate = useNavigate();
 
   const { dronesData, users, updateCart, currentUserId, handleWishlist } =
@@ -49,18 +50,18 @@ function ProductDetail() {
           <div className="border-2 lg:py-0">
             <button
               className="lg:px-4 px-2"
-              onClick={() => setCount((count) => (count > 0 ? count - 1 : 0))}
+              onClick={() => setQty((qty) => (qty > 0 ? qty - 1 : 0))}
             >
               <FaMinus size={12} />
             </button>
             <input
-              value={count}
+              value={qty}
               type="numeric"
               className="lg:w-[80px] bg-gray-200 font-semibold w-[50px] text-center py-2  border-x-2"
             ></input>
             <button
               className="lg:px-4 px-2 items-center"
-              onClick={() => setCount((count) => count + 1)}
+              onClick={() => setQty((qty) => qty + 1)}
             >
               <FaPlus size={12} />
             </button>
@@ -74,7 +75,7 @@ function ProductDetail() {
 
         <div className="flex items-center gap-5 mt-4 max-sm:justify-center  justify-start">
           <button
-            onClick={() => updateCart(selectProduct.id, "add")}
+            onClick={() => updateCart(selectProduct.id, "add", qty)}
             className="bg-black border-none max-md:px-2 max-sm:text-sm  px-4  h-10 border-2  max-md:h-8   gap-2 max-sm:text-center justify-center text-white flex items-center  rounded-sm"
           >
             <IoCartOutline size={16} />
