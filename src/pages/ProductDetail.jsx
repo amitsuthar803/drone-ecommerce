@@ -11,10 +11,10 @@ function ProductDetail() {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
 
-  const { dronesData, user, updateCart, currentUser, updateWishlist } =
+  const { dronesData, users, updateCart, currentUserId, handleWishlist } =
     useDroneData();
 
-  const currentUserData = user.find((u) => u.id === currentUser.id);
+  const currentUserData = users.find((u) => u.id === currentUserId);
 
   const isInWishlist = (productId) => {
     return currentUserData?.wishlistItems.includes(productId);
@@ -81,7 +81,7 @@ function ProductDetail() {
             Add To Cart
           </button>
           <button
-            onClick={() => updateWishlist(selectProduct.id, "add")}
+            onClick={() => handleWishlist(selectProduct.id, "add")}
             className="max-md:px-2  px-4  h-10 border-2  max-md:h-8  border-gray-300 rounded-sm "
           >
             {isInWishlist(selectProduct.id) ? (

@@ -19,20 +19,15 @@ function DroneProvider({ children }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   // State for currently logged-in user
-  const [currentUser, setCurrentUser] = useState({
-    id: 0,
-    name: "amit suthar",
-    wishlistItems: [],
-    cartItems: [],
-  });
+  const [currentUserId, setCurrentUserId] = useState(0);
 
   const [selectedDrone, setSelectedDrone] = useState({});
 
-  const [user, setUsers] = useState([
+  const [users, setUsers] = useState([
     {
       id: 0,
       name: "amit suthar",
-      wishlistItems: [2],
+      wishlistItems: [2, 1],
       cartItems: [],
     },
     {
@@ -166,33 +161,21 @@ function DroneProvider({ children }) {
     "Li-dar",
   ];
 
-  const handleWishList = (id) => {
-    setDronesData((prevDroneData) =>
-      prevDroneData.map((drone) =>
-        drone.id === id ? { ...drone, wishlist: !drone.wishlist } : drone
-      )
-    );
-
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.id === currentUser.id
-          ? {
-              ...user,
-              wishlistItems: user.wishlistItems.includes(id)
-                ? [
-                    ...user.wishlistItems,
-                    user.wishlistItems.filter((itemId) => itemId !== id),
-                  ]
-                : [...user.wishlistItems, id],
-            }
-          : user
-      )
-    );
-  };
-
   // Function to update the cart for the current user
   const updateCart = (productId, action) => {
-    if (currentUser === null) return;
+    if (currentUserId === null) return;
+
+    const currentUser = users.find((user) => user.id === currentUserId);
+    if (!currentUser) return;
+
+    const productInCart = currentUser.cartItems.some(
+      (item) => item.id === productId
+    );
+
+    if (action === "add" && productInCart) {
+      alert("Item already added to the cart");
+      return;
+    }
 
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
@@ -212,21 +195,23 @@ function DroneProvider({ children }) {
     );
   };
 
-  // Function to update the wishlist for the current user
-  const updateWishlist = (productId, action) => {
-    if (currentUser === null) return;
-
+  const handleWishlist = (productId) => {
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
-        user.id === currentUser.id
+        user.id === currentUserId
           ? {
               ...user,
-              wishlistItems:
-                action === "add"
-                  ? [...user.wishlistItems, productId]
-                  : user.wishlistItems.filter((item) => item.id !== productId),
+              wishlistItems: user.wishlistItems.includes(productId)
+                ? user.wishlistItems.filter((itemId) => itemId !== productId)
+                : [...user.wishlistItems, productId],
             }
           : user
+      )
+    );
+
+    setDronesData((prevDroneData) =>
+      prevDroneData.map((drone) =>
+        drone.id === productId ? { ...drone, wishlist: !drone.wishlist } : drone
       )
     );
   };
@@ -240,11 +225,11 @@ function DroneProvider({ children }) {
         setSelectedDrone,
         category,
         dronesData,
-        handleWishList,
-        user,
+        handleWishlist,
+        setCurrentUserId,
+        currentUserId,
+        users,
         updateCart,
-        updateWishlist,
-        currentUser,
       }}
     >
       {children}

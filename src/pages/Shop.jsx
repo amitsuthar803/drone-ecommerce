@@ -17,9 +17,9 @@ function Shop() {
     setSelectedDrone,
     setSelectedCategory,
     category,
-    handleWishList,
-    user,
-    currentUser,
+    handleWishlist,
+    users,
+    currentUserId,
   } = useDroneData();
 
   const navigate = useNavigate();
@@ -35,8 +35,7 @@ function Shop() {
     console.log(drone);
   };
 
-  const currentUserData = user.find((u) => u.id === currentUser.id);
- 
+  const currentUserData = users.find((u) => u.id === currentUserId);
 
   const isInWishlist = (productId) => {
     return currentUserData?.wishlistItems.includes(productId);
@@ -135,13 +134,13 @@ function Shop() {
 
                     {isInWishlist(drone.id) ? (
                       <AiFillHeart
-                        onClick={() => handleWishList(drone.id)}
+                        onClick={() => handleWishlist(drone.id)}
                         className=" cursor-pointer text-red-500"
                         size={18}
                       />
                     ) : (
                       <AiOutlineHeart
-                        onClick={() => handleWishList(drone.id)}
+                        onClick={() => handleWishlist(drone.id)}
                         className=" cursor-pointer text-red-500"
                         size={18}
                       />

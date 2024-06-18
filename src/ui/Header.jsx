@@ -11,13 +11,12 @@ import {
 import { useDroneData } from "../context/DroneContext";
 
 function Header({ setShowSidebar }) {
-  const { user, currentUser } = useDroneData();
+  const { users, currentUserId } = useDroneData();
 
   const navigate = useNavigate();
 
-  const currentUserData = user.find((u) => u.id === currentUser.id);
-
- 
+  const currentUserData = users.find((u) => u.id === currentUserId);
+  console.log(currentUserId);
 
   const handleHamburgerClick = (event) => {
     event.stopPropagation(); // Stop the event from propagating to the document
