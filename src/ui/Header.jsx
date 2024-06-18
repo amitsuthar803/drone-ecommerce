@@ -1,5 +1,5 @@
 import { RiRobotFill } from "react-icons/ri";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Proptype from "prop-types";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
@@ -77,12 +77,12 @@ function Header({ setShowSidebar }) {
             </span>
           </div>
 
-          <div className="relative">
+          <Link className="relative" to={"cart"}>
             <PiShoppingCartBold className=" z-10 cursor-pointer" size={20} />
             <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-black px-1.5 rounded-full z-30">
               {currentUserData?.cartItems.length}
             </span>
-          </div>
+          </Link>
         </div>
       </div>
     </header>

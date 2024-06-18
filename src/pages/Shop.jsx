@@ -68,7 +68,10 @@ function Shop() {
   return (
     <div className="text-center flex-col flex m-auto w-full justify-center overflow-hidden">
       <div className="text-center mb-5  flex w-full items-start justify-between">
-        <button className="flex flex-0  max-sm:text-sm items-center">
+        <button
+          onClick={() => navigate("/")}
+          className="flex flex-0  max-sm:text-sm items-center"
+        >
           <IoIosArrowRoundBack />
           Back
         </button>
