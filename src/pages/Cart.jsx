@@ -59,10 +59,16 @@ function Cart() {
                 {currentUser.cartItems.map((item) => (
                   <tr key={item.id}>
                     <td className="flex justify-center py-3 items-center">
-                      <img src={item.path} width={100} height={100} alt="" />
+                      <img
+                        src={item.path}
+                        className=" max-sm:w-[70px] w-[100px] "
+                        alt=""
+                      />
                     </td>
-                    <td className="font-semibold uppercase">{item.name}</td>
-                    <td>₹{item.price}</td>
+                    <td className="font-semibold uppercase max-sm:text-sm">
+                      {item.name}
+                    </td>
+                    <td className=" max-sm:text-sm">₹{item.price}</td>
                     <td className="">
                       <div className="border-2 flex text-gray-500 items-center justify-evenly">
                         <button
@@ -76,7 +82,7 @@ function Cart() {
                         <input
                           value={item.qty}
                           type="numeric"
-                          className="font-semibold text-black w-[25px] text-center py-[2px]  "
+                          className="font-semibold text-black w-[25px] max-sm:text-sm text-center py-[2px]  "
                         ></input>
                         <button
                           className="items-center"
@@ -88,7 +94,9 @@ function Cart() {
                         </button>
                       </div>
                     </td>
-                    <td>₹{item.price * item.qty}</td>
+                    <td className=" max-sm:text-sm">
+                      ₹{item.price * item.qty}
+                    </td>
                     <td>
                       <div className="flex justify-center items-center gap-2">
                         <button
@@ -114,16 +122,27 @@ function Cart() {
               </tbody>
             </table>
           </div>
-          <div className="border-2 flex flex-col lg:w-1/3">
-            <div>
-              <h3 className="uppercase">Apply Discount Code</h3>
-              <div>
-                <input type="text" />
-                <button>APPLY DISCOUNT</button>
-                <div>
-                  <h3>Estimate Shipping and Tax</h3>
-                  <p>Enter your destination to get a shipping estimate.</p>
-                  <button>+</button>
+          <div className="border-2 m-auto bg-[#F0F1F2] flex flex-col justify-center items-center w-full lg:w-1/3">
+            <div className="flex flex-col items-start p-4 w-full">
+              <h3 className="uppercase  max-sm:text-sm font-semibold">
+                Apply Discount Code
+              </h3>
+              <div className="w-full">
+                <div className="flex bg-white my-2 border-2 px-2">
+                  <input
+                    type="text"
+                    className="max-sm:text-[10px] bg-white  py-2  outline-none w-full"
+                    placeholder="Enter Discount Code"
+                  />
+                  <button className=" max-sm:text-[10px]  whitespace-nowrap font-semibold">
+                    APPLY DISCOUNT
+                  </button>
+                </div>
+                <div className="flex justify-between">
+                  <h3 className="uppercase  max-sm:text-sm font-semibold">
+                    Estimate Shipping and Tax
+                  </h3>
+                  <button className="font-semibold">+</button>
                 </div>
               </div>
             </div>
