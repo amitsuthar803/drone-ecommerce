@@ -108,19 +108,22 @@ function Shop() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2    md:grid-cols-3   mt-10 p-2 gap-5 overflow-y-scroll">
+        <div className="grid grid-cols-2  md:grid-cols-3  items-start md:gap-14  mt-10 p-2 gap-5 overflow-y-scroll">
           {filterDrones.map((drone) => (
             <div
               key={drone.id}
-              className="m-auto max-sm:p-3 p-4 shadow-sm rounded-lg bg-[#FFFFFF] flex flex-col"
+              className=" max-sm:p-3 p-4 shadow-sm rounded-lg bg-[#FFFFFF] flex flex-col"
             >
               <div className="py-5 relative rounded-md bg-[#EDEDEF]">
-                <img className="w-[250px] " src={drone.path} alt="" />
+                <img
+                  className="w-[250px] m-auto flex items-center justify-center"
+                  src={drone.path}
+                  alt=""
+                />
                 <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#8a8a8a23] p-1 rounded-full">
                   <AiOutlineEye
                     onClick={() => handleSelect(drone)}
-                    className=" cursor-pointer"
-                    size={20}
+                    className=" cursor-pointer max-sm:text-[15px] text-[18px]"
                   />
                 </span>
               </div>

@@ -17,7 +17,7 @@ function ProductMobileView() {
         <div key={item.id} className="flex justify-start gap-5">
           <img
             src={item.path}
-            className="bg-gray-200 p-2 rounded-lg w-[125px]"
+            className="bg-gray-100 p-2 rounded-lg w-[125px]"
             alt=""
           />
 
