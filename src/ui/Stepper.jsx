@@ -1,41 +1,24 @@
-import { useState } from "react";
+/* eslint-disable react/prop-types */
 import "./Stepper.css";
-function Stepper() {
-  const steps = ["Cart", "Address", "Payment"];
-  const [currentStep, setCurrentStep] = useState(1);
+import { TiTick } from "react-icons/ti";
 
+function Stepper({ currentStep, complete, steps }) {
   return (
     <>
-      <div className="flex justify-between ">
+      <div className="flex mt-3 justify-between ">
         {steps?.map((step, i) => (
           <div
             key={i}
-            className={`step-item ${currentStep === i + 1 && "active"}`}
+            className={`step-item ${currentStep === i + 1 && "active"} ${
+              (i + 1 < currentStep || complete) && "complete"
+            }`}
           >
-            <div className="step">{i + 1}</div>
-            <p className="text-gray-500">{step}</p>
+            <div className="step">
+              {i + 1 < currentStep || complete ? <TiTick size={24} /> : i + 1}
+            </div>
+            <p className="text-gray-500 max-sm:text-sm">{step}</p>
           </div>
         ))}
-      </div>
-      <div className="flex  gap-5">
-        <button
-          disabled={currentStep < 2}
-          onClick={() => {
-            setCurrentStep((prev) => prev - 1);
-          }}
-          className={`btn ${currentStep < 2 && "cursor-not-allowed"}`}
-        >
-          Prev
-        </button>
-        <button
-          disabled={currentStep > 2}
-          onClick={() => {
-            setCurrentStep((prev) => prev + 1);
-          }}
-          className={`btn ${currentStep > 2 && "cursor-not-allowed"}`}
-        >
-          Next
-        </button>
       </div>
     </>
   );

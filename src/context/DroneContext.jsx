@@ -166,6 +166,8 @@ function DroneProvider({ children }) {
     "Li-dar",
   ];
 
+  const currentUser = users.find((user) => user.id === currentUserId);
+
   // Function to update the cart for the current user
   const updateCart = (productId, action, qty = 1) => {
     if (currentUserId === null) return;
@@ -232,26 +234,51 @@ function DroneProvider({ children }) {
         alert("Item added to the cart");
       }
     } else if (action === "remove") {
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === currentUser.id
-            ? {
-                ...user,
-                cartItems: user.cartItems.filter(
-                  (item) => item.id !== productId
-                ),
-              }
-            : user
-        )
-      );
+      if (productInCart.qty > 1) {
+        // Decrease the quantity
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === currentUser.id
+              ? {
+                  ...user,
+                  cartItems: user.cartItems.map((item) =>
+                    item.id === productId
+                      ? { ...item, qty: item.qty - 1 }
+                      : item
+                  ),
+                }
+              : user
+          )
+        );
 
-      setDronesDataState((prevDronesData) =>
-        prevDronesData.map((drone) =>
-          drone.id === productId
-            ? { ...drone, qty: Math.max(drone.qty - qty, 0) }
-            : drone
-        )
-      );
+        setDronesDataState((prevDronesData) =>
+          prevDronesData.map((drone) =>
+            drone.id === productId ? { ...drone, qty: drone.qty - 1 } : drone
+          )
+        );
+        alert("Item quantity decreased in the cart");
+      } else {
+        // Remove the item from the cart
+        setUsers((prevUsers) =>
+          prevUsers.map((user) =>
+            user.id === currentUser.id
+              ? {
+                  ...user,
+                  cartItems: user.cartItems.filter(
+                    (item) => item.id !== productId
+                  ),
+                }
+              : user
+          )
+        );
+
+        setDronesDataState((prevDronesData) =>
+          prevDronesData.map((drone) =>
+            drone.id === productId ? { ...drone, qty: 0 } : drone
+          )
+        );
+        alert("Item removed from the cart");
+      }
     }
   };
 
@@ -289,6 +316,7 @@ function DroneProvider({ children }) {
         setCurrentUserId,
         currentUserId,
         users,
+        currentUser,
         updateCart,
       }}
     >
