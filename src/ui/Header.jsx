@@ -72,14 +72,14 @@ function Header({ setShowSidebar }) {
 
           <div className="relative">
             <PiHeartStraightBold className=" z-10 cursor-pointer" size={20} />
-            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-red-600 px-[4px] rounded-full z-30">
+            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-red-600 w-2 h-2 p-2 rounded-full z-30">
               {currentUserData?.wishlistItems.length}
             </span>
           </div>
 
           <Link className="relative" to={"cart"}>
             <PiShoppingCartBold className=" z-10 cursor-pointer" size={20} />
-            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-black px-1.5 rounded-full z-30">
+            <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold w-2 h-2 bg-black p-2 rounded-full z-30">
               {currentUserData?.cartItems.length}
             </span>
           </Link>

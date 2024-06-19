@@ -3,10 +3,11 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import Modal from "../ui/Modal";
 
 import { useDroneData } from "../context/DroneContext";
-import { AiFillHeart, AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 import { IoCartOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { GoDotFill } from "react-icons/go";
+import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 
 function Shop() {
   const [showModal, setShowModal] = useState(false);
@@ -136,13 +137,13 @@ function Shop() {
                     </span>
 
                     {isInWishlist(drone.id) ? (
-                      <AiFillHeart
+                      <PiHeartStraightFill
                         onClick={() => handleWishlist(drone.id)}
                         className=" cursor-pointer text-red-500"
                         size={18}
                       />
                     ) : (
-                      <AiOutlineHeart
+                      <PiHeartStraightBold
                         onClick={() => handleWishlist(drone.id)}
                         className=" cursor-pointer text-red-500"
                         size={18}

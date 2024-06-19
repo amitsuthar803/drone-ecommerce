@@ -3,8 +3,8 @@ import { useDroneData } from "../context/DroneContext";
 import { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
 import { FaMinus, FaPlus } from "react-icons/fa";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -57,7 +57,7 @@ function ProductDetail() {
             <input
               value={qty}
               type="numeric"
-              className="lg:w-[80px] bg-gray-200 font-semibold w-[50px] text-center py-2  border-x-2"
+              className="lg:w-[50px] bg-transparent  font-semibold w-[40px] text-center py-2  border-x-2"
             ></input>
             <button
               className="lg:px-4 px-2 items-center"
@@ -86,12 +86,12 @@ function ProductDetail() {
             className="max-md:px-2  px-4  h-10 border-2  max-md:h-8  border-gray-300 rounded-sm "
           >
             {isInWishlist(selectProduct.id) ? (
-              <AiFillHeart
+              <PiHeartStraightFill
                 key={selectProduct.id}
                 className=" cursor-pointer lg:text-[22px] text-[20px] text-red-500"
               />
             ) : (
-              <AiOutlineHeart
+              <PiHeartStraightBold
                 key={selectProduct.id}
                 className=" cursor-pointer lg:text-[22px] text-[20px] text-red-500"
               />

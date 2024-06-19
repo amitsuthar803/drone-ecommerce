@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createContext, useContext, useState } from "react";
 import PropTypes from "prop-types";
 
@@ -195,9 +196,7 @@ function DroneProvider({ children }) {
         // If product is already in cart, update quantity
         if (productInCart) {
           if (productInCart.qty === qty) {
-            toast.error(
-              "Item already added to the cart with the same quantity."
-            );
+            toast.error("Item already added to the cart!");
             return;
           }
           setUsers((prevUsers) =>
@@ -217,7 +216,7 @@ function DroneProvider({ children }) {
               drone.id === productId ? { ...drone, qty: qty } : drone
             )
           );
-          toast.success("Item quantity updated in the cart.");
+          // toast.success("Item quantity updated in the cart.");
         } else {
           // Otherwise, add new product to cart
           const selectedDrone = dronesData.find(
@@ -270,7 +269,7 @@ function DroneProvider({ children }) {
               drone.id === productId ? { ...drone, qty: drone.qty - 1 } : drone
             )
           );
-          toast.success("Item quantity decreased in the cart.");
+          // toast.success("Item quantity decreased in the cart.");
         } else {
           // Otherwise, remove the item from cart completely
           setUsers((prevUsers) =>
@@ -320,6 +319,7 @@ function DroneProvider({ children }) {
         drone.id === productId ? { ...drone, wishlist: !drone.wishlist } : drone
       )
     );
+    s;
   };
 
   // Function to handle removing a product from cart by productId
