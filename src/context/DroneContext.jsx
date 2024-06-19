@@ -196,7 +196,9 @@ function DroneProvider({ children }) {
         // If product is already in cart, update quantity
         if (productInCart) {
           if (productInCart.qty === qty) {
-            toast.error("Item already added to the cart!");
+            toast.error(
+              "Item already added to the cart with the same quantity."
+            );
             return;
           }
           setUsers((prevUsers) =>
@@ -216,7 +218,7 @@ function DroneProvider({ children }) {
               drone.id === productId ? { ...drone, qty: qty } : drone
             )
           );
-          // toast.success("Item quantity updated in the cart.");
+          toast.success("Item quantity updated.");
         } else {
           // Otherwise, add new product to cart
           const selectedDrone = dronesData.find(
@@ -269,7 +271,7 @@ function DroneProvider({ children }) {
               drone.id === productId ? { ...drone, qty: drone.qty - 1 } : drone
             )
           );
-          // toast.success("Item quantity decreased in the cart.");
+          toast.success("Item quantity decreased.");
         } else {
           // Otherwise, remove the item from cart completely
           setUsers((prevUsers) =>
