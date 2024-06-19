@@ -30,7 +30,48 @@ function DroneProvider({ children }) {
       id: 0,
       name: "amit suthar",
       wishlistItems: [2, 1],
-      cartItems: [],
+      cartItems: [
+        {
+          id: 7,
+          name: "Velocity Voyager",
+          path: drone8,
+          qty: 6,
+          price: 999,
+          type: "Racing",
+          description:
+            "Embark on epic racing adventures with this agile and aerodynamic drone, capable of reaching blistering speeds and navigating tight turns with precision.",
+        },
+        {
+          id: 8,
+          name: "Heavy Hauler",
+          path: drone9,
+          qty: 6,
+          type: "Industrial",
+          price: 999,
+          description:
+            "Take on the toughest challenges with this heavy-lifting drone, built for industrial operations that demand strength, durability, and reliability.",
+        },
+        {
+          id: 9,
+          name: "GeoMapper Pro",
+          path: drone10,
+          qty: 1,
+          price: 999,
+          type: "Li-dar",
+          description:
+            "The GeoMapper Pro is a cutting-edge LiDAR drone engineered for high-precision mapping and surveying applications. Equipped with advanced LiDAR technology, it delivers accurate 3D models of terrain, structures, and environments, making it an indispensable tool for professionals in industries such as agriculture, construction, and urban planning.",
+        },
+        {
+          id: 10,
+          name: "ZoomZap Flyer",
+          path: drone11,
+          price: 999,
+          type: "Fun",
+          qty: 2,
+          description:
+            "Feel the thrill of high-speed flights and exhilarating aerial maneuvers with this fun-loving drone designed for recreational pilots.",
+        },
+      ],
     },
     {
       id: 1,
