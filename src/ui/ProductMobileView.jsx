@@ -1,7 +1,7 @@
 import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 import { useDroneData } from "../context/DroneContext";
 import { RxCross2 } from "react-icons/rx";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import QuantityButton from "./QuantityButton";
 
 function ProductMobileView() {
   const { currentUser, handleWishlist, removeFromCart, updateCart } =
@@ -25,25 +25,7 @@ function ProductMobileView() {
             <h3 className=" font-semibold">{item.name}</h3>
             <span>₹{item.price}</span>
             <div className="flex justify-between mt-2">
-              <div className="border-2 flex text-gray-500 items-center justify-evenly">
-                <button
-                  className=""
-                  onClick={() => updateCart(item.id, "remove", item.qty)}
-                >
-                  <FaMinus size={12} />
-                </button>
-                <input
-                  value={item.qty}
-                  type="numeric"
-                  className="font-semibold text-black w-[25px] max-sm:text-sm text-center py-[2px]  "
-                ></input>
-                <button
-                  className="items-center"
-                  onClick={() => updateCart(item.id, "add", item.qty + 1)}
-                >
-                  <FaPlus size={12} />
-                </button>
-              </div>
+              <QuantityButton item={item} className={``} />
 
               <div className="flex justify-center items-center gap-2">
                 <button

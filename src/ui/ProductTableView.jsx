@@ -1,7 +1,7 @@
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { useDroneData } from "../context/DroneContext";
 import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 import { RxCross2 } from "react-icons/rx";
+import QuantityButton from "./QuantityButton";
 
 function ProductTableView() {
   const { currentUser, updateCart, removeFromCart, handleWishlist } =
@@ -38,25 +38,7 @@ function ProductTableView() {
             </td>
             <td className=" max-sm:text-sm">₹{item.price}</td>
             <td className="">
-              <div className="border-2 flex text-gray-500 items-center justify-evenly">
-                <button
-                  className=""
-                  onClick={() => updateCart(item.id, "remove", item.qty)}
-                >
-                  <FaMinus size={12} />
-                </button>
-                <input
-                  value={item.qty}
-                  type="numeric"
-                  className="font-semibold text-black w-[25px] max-sm:text-sm text-center py-[2px]  "
-                ></input>
-                <button
-                  className="items-center"
-                  onClick={() => updateCart(item.id, "add", item.qty + 1)}
-                >
-                  <FaPlus size={12} />
-                </button>
-              </div>
+              <QuantityButton item={item} />
             </td>
             <td className=" max-sm:text-sm">₹{item.price * item.qty}</td>
             <td>
