@@ -9,7 +9,8 @@ function Cart() {
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
   const steps = ["Cart", "Address", "Payment"];
-  const { currentUser, updateCart, handleWishlist } = useDroneData();
+  const { currentUser, updateCart, removeFromCart, handleWishlist } =
+    useDroneData();
 
   const isInWishlist = (productId) => {
     return currentUser?.wishlistItems.includes(productId);
@@ -84,7 +85,7 @@ function Cart() {
                           />
                         )}
                       </button>
-                      <button onClick={() => updateCart(items.id)}>
+                      <button onClick={() => removeFromCart(items.id)}>
                         <RxCross2 />
                       </button>
                     </div>

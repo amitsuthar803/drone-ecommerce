@@ -12,6 +12,7 @@ import drone8 from "../../assets/drone8.png";
 import drone9 from "../../assets/drone9.png";
 import drone10 from "../../assets/drone10.png";
 import drone11 from "../../assets/drone11.png";
+import toast from "react-hot-toast";
 
 const DroneContext = createContext();
 
@@ -170,115 +171,133 @@ function DroneProvider({ children }) {
 
   // Function to update the cart for the current user
   const updateCart = (productId, action, qty = 1) => {
-    if (currentUserId === null) return;
+    // Check if user is logged in
+    if (currentUserId === null) {
+      alert("Please log in to update your cart.");
+      return;
+    }
 
+    // Find the current user
     const currentUser = users.find((user) => user.id === currentUserId);
-    if (!currentUser) return;
+    if (!currentUser) {
+      alert("User not found.");
+      return;
+    }
 
+    // Find the product in the cart
     const productInCart = currentUser.cartItems.find(
       (item) => item.id === productId
     );
 
-    if (action === "add") {
-      if (productInCart) {
-        if (productInCart.qty === qty) {
-          alert("Item already added to the cart with the same quantity");
-          return;
+    // Handle different actions: add, remove, or remove completely
+    switch (action) {
+      case "add":
+        // If product is already in cart, update quantity
+        if (productInCart) {
+          if (productInCart.qty === qty) {
+            toast.error(
+              "Item already added to the cart with the same quantity."
+            );
+            return;
+          }
+          setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+              user.id === currentUserId
+                ? {
+                    ...user,
+                    cartItems: user.cartItems.map((item) =>
+                      item.id === productId ? { ...item, qty: qty } : item
+                    ),
+                  }
+                : user
+            )
+          );
+          setDronesData((prevDronesData) =>
+            prevDronesData.map((drone) =>
+              drone.id === productId ? { ...drone, qty: qty } : drone
+            )
+          );
+          toast.success("Item quantity updated in the cart.");
+        } else {
+          // Otherwise, add new product to cart
+          const selectedDrone = dronesData.find(
+            (drone) => drone.id === productId
+          );
+          if (selectedDrone) {
+            setUsers((prevUsers) =>
+              prevUsers.map((user) =>
+                user.id === currentUserId
+                  ? {
+                      ...user,
+                      cartItems: [...user.cartItems, { ...selectedDrone, qty }],
+                    }
+                  : user
+              )
+            );
+            setDronesData((prevDronesData) =>
+              prevDronesData.map((drone) =>
+                drone.id === productId
+                  ? { ...drone, qty: drone.qty + qty }
+                  : drone
+              )
+            );
+
+            toast("Item added to the cart", {
+              icon: "➕",
+            });
+          }
         }
+        break;
+      case "remove":
+        // If product quantity is more than 1, decrease quantity
+        if (productInCart && productInCart.qty > 1) {
+          setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+              user.id === currentUserId
+                ? {
+                    ...user,
+                    cartItems: user.cartItems.map((item) =>
+                      item.id === productId
+                        ? { ...item, qty: item.qty - 1 }
+                        : item
+                    ),
+                  }
+                : user
+            )
+          );
+          setDronesData((prevDronesData) =>
+            prevDronesData.map((drone) =>
+              drone.id === productId ? { ...drone, qty: drone.qty - 1 } : drone
+            )
+          );
+          toast.success("Item quantity decreased in the cart.");
+        } else {
+          // Otherwise, remove the item from cart completely
+          setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+              user.id === currentUserId
+                ? {
+                    ...user,
+                    cartItems: user.cartItems.filter(
+                      (item) => item.id !== productId
+                    ),
+                  }
+                : user
+            )
+          );
+          setDronesData((prevDronesData) =>
+            prevDronesData.map((drone) =>
+              drone.id === productId ? { ...drone, qty: 0 } : drone
+            )
+          );
 
-        // Replace the quantity with the new quantity
-        setUsers((prevUsers) =>
-          prevUsers.map((user) =>
-            user.id === currentUser.id
-              ? {
-                  ...user,
-                  cartItems: user.cartItems.map((item) =>
-                    item.id === productId ? { ...item, qty: qty } : item
-                  ),
-                }
-              : user
-          )
-        );
-
-        setDronesDataState((prevDronesData) =>
-          prevDronesData.map((drone) =>
-            drone.id === productId ? { ...drone, qty: qty } : drone
-          )
-        );
-        alert("Item quantity updated in the cart");
-      } else {
-        setUsers((prevUsers) =>
-          prevUsers.map((user) =>
-            user.id === currentUser.id
-              ? {
-                  ...user,
-                  cartItems: [
-                    ...user.cartItems,
-                    {
-                      ...dronesDataState.find(
-                        (drone) => drone.id === productId
-                      ),
-                      qty: qty,
-                    },
-                  ],
-                }
-              : user
-          )
-        );
-
-        setDronesDataState((prevDronesData) =>
-          prevDronesData.map((drone) =>
-            drone.id === productId ? { ...drone, qty: drone.qty + qty } : drone
-          )
-        );
-        alert("Item added to the cart");
-      }
-    } else if (action === "remove") {
-      if (productInCart.qty > 1) {
-        // Decrease the quantity
-        setUsers((prevUsers) =>
-          prevUsers.map((user) =>
-            user.id === currentUser.id
-              ? {
-                  ...user,
-                  cartItems: user.cartItems.map((item) =>
-                    item.id === productId
-                      ? { ...item, qty: item.qty - 1 }
-                      : item
-                  ),
-                }
-              : user
-          )
-        );
-
-        setDronesDataState((prevDronesData) =>
-          prevDronesData.map((drone) =>
-            drone.id === productId ? { ...drone, qty: drone.qty - 1 } : drone
-          )
-        );
-        alert("Item quantity decreased in the cart");
-      } else {
-        // Remove the item from the cart
-        setUsers((prevUsers) =>
-          prevUsers.map((user) =>
-            user.id === currentUser.id
-              ? {
-                  ...user,
-                  cartItems: user.cartItems.filter(
-                    (item) => item.id !== productId
-                  ),
-                }
-              : user
-          )
-        );
-
-        setDronesDataState((prevDronesData) =>
-          prevDronesData.map((drone) =>
-            drone.id === productId ? { ...drone, qty: 0 } : drone
-          )
-        );
-        alert("Item removed from the cart");
-      }
+          toast("Item removed from the cart", {
+            icon: "❌",
+          });
+        }
+        break;
+      default:
+        toast.error("Invalid action.");
     }
   };
 
@@ -303,6 +322,41 @@ function DroneProvider({ children }) {
     );
   };
 
+  // Function to handle removing a product from cart by productId
+  const removeFromCart = (productId) => {
+    if (currentUserId === null) {
+      toast.error("Please log in to remove items from your cart.");
+      return;
+    }
+
+    const currentUser = users.find((user) => user.id === currentUserId);
+    if (!currentUser) {
+      toast.error("User not found.");
+      return;
+    }
+
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.id === currentUserId
+          ? {
+              ...user,
+              cartItems: user.cartItems.filter((item) => item.id !== productId),
+            }
+          : user
+      )
+    );
+
+    setDronesData((prevDronesData) =>
+      prevDronesData.map((drone) =>
+        drone.id === productId ? { ...drone, qty: 0 } : drone
+      )
+    );
+
+    toast("Item removed from the cart", {
+      icon: "❌",
+    });
+  };
+
   return (
     <DroneContext.Provider
       value={{
@@ -318,6 +372,7 @@ function DroneProvider({ children }) {
         users,
         currentUser,
         updateCart,
+        removeFromCart,
       }}
     >
       {children}
