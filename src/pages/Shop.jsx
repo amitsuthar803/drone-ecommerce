@@ -98,7 +98,7 @@ function Shop() {
                   ${
                     selectedCategory === cate
                       ? "bg-black text-white border-black"
-                      : " hover:border-black active:border-black  hover:text-white hover:bg-black "
+                      : " hover:border-black active:border-black bg-[#FFFFFF]  hover:text-white hover:bg-black "
                   }
                   `}
               >
@@ -108,13 +108,13 @@ function Shop() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3  mt-10 p-2 gap-5 overflow-y-scroll">
+        <div className="grid grid-cols-2    md:grid-cols-3   mt-10 p-2 gap-5 overflow-y-scroll">
           {filterDrones.map((drone) => (
             <div
               key={drone.id}
-              className="m-auto max-sm:p-3 p-4 rounded-lg bg-[#EFEFF0] flex flex-col"
+              className="m-auto max-sm:p-3 p-4 shadow-sm rounded-lg bg-[#FFFFFF] flex flex-col"
             >
-              <div className="py-5 relative rounded-md bg-white">
+              <div className="py-5 relative rounded-md bg-[#EDEDEF]">
                 <img className="w-[250px] " src={drone.path} alt="" />
                 <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#8a8a8a23] p-1 rounded-full">
                   <AiOutlineEye
