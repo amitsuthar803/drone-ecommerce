@@ -236,86 +236,131 @@ function DroneProvider({ children }) {
 
   // Function to update the cart for the current user
   const updateCart = (productId, action, qty = 1) => {
-    const currentUser = users.find((user) => user.id === currentUserId);
-
+    // Check if user is logged in
     if (currentUserId === null) {
       alert("Please log in to update your cart.");
       return;
     }
+
+    // Find the current user
 
     if (!currentUser) {
       alert("User not found.");
       return;
     }
 
+    // Find the product in the cart
     const productInCart = currentUser.cartItems.find(
       (item) => item.id === productId
     );
 
-    const updateUsersCartItems = (newCartItems) => {
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === currentUserId
-            ? { ...user, cartItems: newCartItems }
-            : user
-        )
-      );
-    };
-
-    const addProductToCart = (product, qty) => {
-      const newCartItems = [...currentUser.cartItems, { ...product, qty }];
-      updateUsersCartItems(newCartItems);
-      toast("Item added to the cart", { icon: "➕" });
-    };
-
-    const updateProductInCart = (product, qty) => {
-      const newCartItems = currentUser.cartItems.map((item) =>
-        item.id === productId ? { ...item, qty } : item
-      );
-      updateUsersCartItems(newCartItems);
-      toast.success("Item quantity updated.");
-    };
-
-    const removeProductFromCart = () => {
-      const newCartItems = currentUser.cartItems.filter(
-        (item) => item.id !== productId
-      );
-      updateUsersCartItems(newCartItems);
-      toast("Item removed from the cart", { icon: "❌" });
-    };
-
-    const decreaseProductQuantity = (product) => {
-      const newCartItems = currentUser.cartItems.map((item) =>
-        item.id === productId ? { ...item, qty: item.qty - 1 } : item
-      );
-      updateUsersCartItems(newCartItems);
-      toast.success("Item quantity decreased.");
-    };
-
+    // Handle different actions: add, remove, or remove completely
     switch (action) {
       case "add":
+        // If product is already in cart, update quantity
         if (productInCart) {
-          updateProductInCart(productInCart, qty);
+          if (productInCart.qty === qty) {
+            toast.error(
+              "Item already added to the cart with the same quantity."
+            );
+            return;
+          }
+          setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+              user.id === currentUserId
+                ? {
+                    ...user,
+                    cartItems: user.cartItems.map((item) =>
+                      item.id === productId ? { ...item, qty: qty } : item
+                    ),
+                  }
+                : user
+            )
+          );
+          setDronesData((prevDronesData) =>
+            prevDronesData.map((drone) =>
+              drone.id === productId ? { ...drone, qty: qty } : drone
+            )
+          );
+          toast.success("Item quantity updated.");
         } else {
+          // Otherwise, add new product to cart
           const selectedDrone = dronesData.find(
             (drone) => drone.id === productId
           );
           if (selectedDrone) {
-            addProductToCart(selectedDrone, qty);
+            setUsers((prevUsers) =>
+              prevUsers.map((user) =>
+                user.id === currentUserId
+                  ? {
+                      ...user,
+                      cartItems: [...user.cartItems, { ...selectedDrone, qty }],
+                    }
+                  : user
+              )
+            );
+            setDronesData((prevDronesData) =>
+              prevDronesData.map((drone) =>
+                drone.id === productId
+                  ? { ...drone, qty: drone.qty + qty }
+                  : drone
+              )
+            );
+
+            toast("Item added to the cart", {
+              icon: "➕",
+            });
           }
         }
         break;
-
       case "remove":
-        if (productInCart) {
-          if (productInCart.qty > 1) {
-            decreaseProductQuantity(productInCart);
-          } else {
-            removeProductFromCart();
-          }
+        // If product quantity is more than 1, decrease quantity
+        if (productInCart && productInCart.qty > 1) {
+          setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+              user.id === currentUserId
+                ? {
+                    ...user,
+                    cartItems: user.cartItems.map((item) =>
+                      item.id === productId
+                        ? { ...item, qty: item.qty - 1 }
+                        : item
+                    ),
+                  }
+                : user
+            )
+          );
+          setDronesData((prevDronesData) =>
+            prevDronesData.map((drone) =>
+              drone.id === productId ? { ...drone, qty: drone.qty - 1 } : drone
+            )
+          );
+          toast.success("Item quantity decreased.");
+        } else {
+          // Otherwise, remove the item from cart completely
+          setUsers((prevUsers) =>
+            prevUsers.map((user) =>
+              user.id === currentUserId
+                ? {
+                    ...user,
+                    cartItems: user.cartItems.filter(
+                      (item) => item.id !== productId
+                    ),
+                  }
+                : user
+            )
+          );
+          setDronesData((prevDronesData) =>
+            prevDronesData.map((drone) =>
+              drone.id === productId ? { ...drone, qty: 0 } : drone
+            )
+          );
+
+          toast("Item removed from the cart", {
+            icon: "❌",
+          });
         }
         break;
-
       default:
         toast.error("Invalid action.");
     }
@@ -340,6 +385,7 @@ function DroneProvider({ children }) {
         drone.id === productId ? { ...drone, wishlist: !drone.wishlist } : drone
       )
     );
+    s;
   };
 
   // Function to handle removing a product from cart by productId

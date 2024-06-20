@@ -50,9 +50,19 @@ function CheckoutPage() {
                 </button>
               </div>
             )} */}
-            <div className=" flex justify-between">
-              <Link to={"/shop"}>Continue Shopping</Link>
-              <button onClick={() => clearCart()}>Clear Shopping Cart</button>
+            <div className=" flex mt-2 justify-between items-center">
+              <Link
+                className=" text-slate-500 shadow-sm text-[11px] font-semibold bg-gray-300 border-[1px] px-2 py-1 border-gray-400"
+                to={"/shop"}
+              >
+                Continue Shopping
+              </Link>
+              <button
+                className=" text-slate-500 shadow-sm  text-[11px] font-semibold bg-gray-300 border-[1px] px-2 py-1 border-gray-400"
+                onClick={() => clearCart()}
+              >
+                Clear Shopping Cart
+              </button>
             </div>
           </div>
           <div className="mt-2 flex flex-col items-center justify-start w-full md:w-1/3">
