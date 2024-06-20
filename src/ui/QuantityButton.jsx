@@ -5,22 +5,22 @@ function QuantityButton({ item, className }) {
 
   return (
     <div
-      className={`${className}  max-sm:w-[70px]  max-sm:h-[25px] w-[80px] shadow-sm py-1 flex items-center justify-center rounded-sm bg-slate-200`}
+      className={`${className}  max-sm:w-[70px] border-2 border-[#DFDFDF] max-sm:h-[25px] w-[80px]  py-1 flex items-center justify-center rounded-sm`}
     >
       <span
         onClick={() => updateCart(item.id, "remove", item.qty)}
-        className=" cursor-pointer w-full text-center font-semibold"
+        className=" text-[#CECECE] cursor-pointer w-full text-center font-semibold"
       >
         -
       </span>
 
-      <span className=" w-full border-l-2 border-r-2   border-[rgba(0,0,0,0.2)] text-center font-semibold max-sm:text-[12px] text-[16px]">
+      <span className=" w-full text-heading   border-[rgba(0,0,0,0.2)] text-center font-semibold max-sm:text-[12px] text-[16px]">
         {item.qty}
       </span>
 
       <span
         onClick={() => updateCart(item.id, "add", item.qty + 1)}
-        className=" cursor-pointer w-full text-center font-semibold"
+        className="  text-[#CECECE]  cursor-pointer w-full text-center font-semibold"
       >
         +
       </span>

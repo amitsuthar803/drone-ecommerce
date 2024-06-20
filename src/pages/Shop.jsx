@@ -112,15 +112,15 @@ function Shop() {
           {filterDrones.map((drone) => (
             <div
               key={drone.id}
-              className=" max-sm:p-3 p-4 shadow-sm rounded-lg bg-[#FFFFFF] flex flex-col"
+              className=" max-sm:p-3 p-4 border-[1px] border-[#F6F6F6] shadow-md rounded-lg bg-[#FFFFFF] flex flex-col"
             >
-              <div className="py-5 relative rounded-md bg-[#EDEDEF]">
+              <div className="py-5 relative rounded-md bg-[#F6F6F6]">
                 <img
                   className="w-[250px] m-auto flex items-center justify-center"
                   src={drone.path}
                   alt=""
                 />
-                <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#8a8a8a23] p-1 rounded-full">
+                <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#ececec] p-1 rounded-full">
                   <AiOutlineEye
                     onClick={() => handleSelect(drone)}
                     className=" cursor-pointer max-sm:text-[15px] text-[18px]"
@@ -155,10 +155,10 @@ function Shop() {
                   </div>
 
                   <div className="flex flex-col w-full  items-start">
-                    <h3 className=" text-gray-800 max-sm:text-sm max-sm:font-normal font-semibold">
+                    <h3 className=" text-heading max-sm:text-sm max-sm:font-normal font-semibold">
                       {drone.name}
                     </h3>
-                    <span className=" text-black max-sm:text-sm max-sm:font-medium font-medium lg:text-green-600">
+                    <span className=" text-[btn_dark] max-sm:text-sm max-sm:font-medium font-medium lg:text-green-600">
                       ₹{drone.price}
                     </span>
                   </div>
@@ -166,7 +166,7 @@ function Shop() {
 
                 <button
                   onClick={() => handleViewDetails(drone.id)}
-                  className="flex items-center capitalize font-semibold text-[.7rem] lg:text-[.8rem] gap-2  py-2 rounded-sm w-full bg-black text-white  justify-center"
+                  className="flex items-center capitalize font-semibold text-[.7rem] lg:text-[.8rem] gap-2  py-2 rounded-sm w-full bg-btn_dark text-white  justify-center"
                 >
                   <IoCartOutline size={16} />
                   Add to cart

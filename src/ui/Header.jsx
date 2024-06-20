@@ -16,7 +16,6 @@ function Header({ setShowSidebar }) {
   const navigate = useNavigate();
 
   const currentUserData = users.find((u) => u.id === currentUserId);
-  console.log(currentUserId);
 
   const handleHamburgerClick = (event) => {
     event.stopPropagation(); // Stop the event from propagating to the document
@@ -24,7 +23,7 @@ function Header({ setShowSidebar }) {
   };
 
   return (
-    <header className="z-10 h-[75px] relative drop-shadow-sm flex justify-center m-auto border-b-2 items-center w-full bg-white">
+    <header className="z-10 h-[75px] relative drop-shadow-sm flex justify-center m-auto border-b-2 items-center w-full bg-[#FFFFFF]">
       <div className=" px-5 w-[1111px] flex justify-between items-center">
         <GiHamburgerMenu
           onClick={handleHamburgerClick}

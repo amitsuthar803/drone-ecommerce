@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDroneData } from "../context/DroneContext";
 import { useState } from "react";
 import { IoCartOutline } from "react-icons/io5";
-import { FaMinus, FaPlus } from "react-icons/fa";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 
@@ -47,24 +46,26 @@ function ProductDetail() {
 
         <div className="flex mt-3 items-center lg:text-md text-sm  gap-5">
           <h4 className="font-semibold text-gray-500">Quantity:</h4>
-          <div className="border-2 lg:py-0">
-            <button
-              className="lg:px-4 px-2"
+
+          <div
+            className={`max-sm:w-[70px] border-2 border-[#DFDFDF] max-sm:h-[25px] w-[80px]  py-1 flex items-center justify-center rounded-sm`}
+          >
+            <span
+              className=" text-[#CECECE] cursor-pointer w-full text-center font-semibold"
               onClick={() => setQty((qty) => (qty > 0 ? qty - 1 : 0))}
             >
-              <FaMinus size={12} />
-            </button>
-            <input
-              value={qty}
-              type="numeric"
-              className="lg:w-[50px] bg-transparent  font-semibold w-[40px] text-center py-2  border-x-2"
-            ></input>
-            <button
-              className="lg:px-4 px-2 items-center"
+              -
+            </span>
+
+            <span className=" w-full text-heading   border-[rgba(0,0,0,0.2)] text-center font-semibold max-sm:text-[12px] text-[16px]">
+              {qty}
+            </span>
+            <span
+              className="  text-[#CECECE]  cursor-pointer w-full text-center font-semibold"
               onClick={() => setQty((qty) => qty + 1)}
             >
-              <FaPlus size={12} />
-            </button>
+              +
+            </span>
           </div>
         </div>
 

@@ -33,7 +33,7 @@ function AppLayout() {
   });
 
   return (
-    <div className="app-layout bg-[#F5F5F5] flex flex-col m-auto relative h-[100vh]">
+    <div className="app-layout flex flex-col m-auto relative h-[100vh]">
       <Header setShowSidebar={setShowSidebar} />
 
       <Sidebar
