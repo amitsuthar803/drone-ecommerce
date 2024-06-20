@@ -2,7 +2,7 @@ import { useState } from "react";
 import Stepper from "../ui/Stepper";
 import { useDroneData } from "../context/DroneContext";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import CheckoutCard from "../ui/CheckoutCard";
 import ProductTableView from "../ui/ProductTableView";
@@ -14,11 +14,19 @@ function Cart() {
   const steps = ["Cart", "Address", "Payment"];
   const { currentUser } = useDroneData();
 
+  const navigate = useNavigate();
+
   // Calculate total items in cart
   const totalItemsInCart = currentUser.cartItems.reduce(
     (total, item) => total + item.qty,
     0
   );
+
+  const nextHandler = () => {
+    currentStep === steps.length
+      ? setComplete(true)
+      : setCurrentStep((prev) => prev + 1);
+  };
 
   return (
     <div className="flex justify-center items-center text-center w-full flex-col">
@@ -42,9 +50,26 @@ function Cart() {
           <div className="flex-1 text-start w-full ">
             <ProductTableView />
             <ProductMobileView />
+            {!complete && (
+              <div className="flex  gap-5">
+                <button
+                  disabled={currentStep < 2}
+                  onClick={() => {
+                    setComplete(false);
+                    setCurrentStep((prev) => prev - 1);
+                  }}
+                  className={`btn `}
+                >
+                  Prev
+                </button>
+                <button className={`btn`}>
+                  {currentStep === steps.length ? "Finish" : "Next"}
+                </button>
+              </div>
+            )}
           </div>
-          <div className="border-2 bg-[#F0F1F2] mt-2 flex flex-col items-center justify-start w-full md:w-1/3">
-            <CheckoutCard />
+          <div className="  mt-2 flex flex-col items-center justify-start w-full md:w-1/3">
+            <CheckoutCard onClick={() => nextHandler()} />
           </div>
         </div>
       )}
@@ -53,28 +78,3 @@ function Cart() {
 }
 
 export default Cart;
-
-// {!complete && (
-//   <div className="flex  gap-5">
-//     <button
-//       disabled={currentStep < 2}
-//       onClick={() => {
-//         setComplete(false);
-//         setCurrentStep((prev) => prev - 1);
-//       }}
-//       className={`btn `}
-//     >
-//       Prev
-//     </button>
-//     <button
-//       onClick={() => {
-//         currentStep === steps.length
-//           ? setComplete(true)
-//           : setCurrentStep((prev) => prev + 1);
-//       }}
-//       className={`btn`}
-//     >
-//       {currentStep === steps.length ? "Finish" : "Next"}
-//     </button>
-//   </div>
-// )}
