@@ -12,7 +12,7 @@ function ProductMobileView() {
   };
 
   return (
-    <div className="bg-[#feffff] p-3 shadow-sm md:hidden flex flex-col gap-5">
+    <div className="bg-[#feffff] p-3 shadow-sm md:hidden flex flex-col  gap-5">
       {currentUser.cartItems.map((item) => (
         <div key={item.id} className="flex justify-start gap-5">
           <img

@@ -1,12 +1,21 @@
 import { useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import { useDroneData } from "../context/DroneContext";
+import { useNavigate } from "react-router-dom";
 
-function CheckoutCard({ onClick }) {
+function CheckoutCard() {
   const [open, setOpen] = useState(false);
+  const { nextHandler } = useDroneData();
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate("address");
+    nextHandler();
+  };
 
   return (
     <>
-      <div className="flex flex-col  justify-start border-[1px] shadow-sm border-[#666] items-start bg-gray-200 p-4 w-full">
+      <div className="flex flex-col  justify-start border-[1px]  shadow-sm border-[#666] items-start bg-gray-200 p-4 w-full">
         <h3 className="uppercase  max-sm:text-sm font-semibold">
           Apply Discount Code
         </h3>
@@ -125,7 +134,10 @@ function CheckoutCard({ onClick }) {
             </div>
           </div>
         </div>
-        <button onClick={onClick} className="bg-black py-1 w-full text-white">
+        <button
+          onClick={() => handleNext()}
+          className="bg-black py-1 w-full text-white"
+        >
           Procced to Checkout
         </button>
       </div>

@@ -25,6 +25,16 @@ function DroneProvider({ children }) {
 
   const [selectedDrone, setSelectedDrone] = useState({});
 
+  const [currentStep, setCurrentStep] = useState(1);
+  const [complete, setComplete] = useState(false);
+  const steps = ["Cart", "Address", "Payment"];
+
+  const nextHandler = (navigate) => {
+    currentStep === steps.length
+      ? setComplete(true)
+      : setCurrentStep((prev) => prev + 1);
+  };
+
   const [users, setUsers] = useState([
     {
       id: 0,
@@ -211,6 +221,19 @@ function DroneProvider({ children }) {
 
   const currentUser = users.find((user) => user.id === currentUserId);
 
+  const clearCart = () => {
+    setUsers((prevUser) =>
+      prevUser.map((user) =>
+        user.id === currentUserId
+          ? {
+              ...user,
+              cartItems: [],
+            }
+          : user
+      )
+    );
+  };
+
   // Function to update the cart for the current user
   const updateCart = (productId, action, qty = 1) => {
     // Check if user is logged in
@@ -220,7 +243,7 @@ function DroneProvider({ children }) {
     }
 
     // Find the current user
-    const currentUser = users.find((user) => user.id === currentUserId);
+
     if (!currentUser) {
       alert("User not found.");
       return;
@@ -412,10 +435,15 @@ function DroneProvider({ children }) {
         handleWishlist,
         setCurrentUserId,
         currentUserId,
+        clearCart,
         users,
         currentUser,
         updateCart,
         removeFromCart,
+        nextHandler,
+        currentStep,
+        complete,
+        steps,
       }}
     >
       {children}

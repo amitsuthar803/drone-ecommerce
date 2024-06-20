@@ -1,18 +1,12 @@
-import React, { useState } from "react";
 import { useDroneData } from "../context/DroneContext";
 import ProductTableView from "../ui/ProductTableView";
 import ProductMobileView from "../ui/ProductMobileView";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CheckoutCard from "../ui/CheckoutCard";
 
 function CheckoutPage() {
-  const navigate = useNavigate();
-
-  const [currentStep, setCurrentStep] = useState(1);
-  const [complete, setComplete] = useState(false);
-  const steps = ["Cart", "Address", "Payment"];
-  const { currentUser } = useDroneData();
+  const { currentUser, clearCart } = useDroneData();
 
   // Calculate total items in cart
   const totalItemsInCart = currentUser.cartItems.reduce(
@@ -20,15 +14,8 @@ function CheckoutPage() {
     0
   );
 
-  const nextHandler = () => {
-    navigate("/cart/address");
-    currentStep === steps.length
-      ? setComplete(true)
-      : setCurrentStep((prev) => prev + 1);
-  };
-
   return (
-    <div>
+    <div className="w-full">
       {totalItemsInCart === 0 ? (
         <div className="flex justify-center items-center flex-col w-full">
           <p className="mt-4 text-gray-600">
@@ -46,7 +33,7 @@ function CheckoutPage() {
           <div className="flex-1 text-start w-full ">
             <ProductTableView />
             <ProductMobileView />
-            {!complete && (
+            {/* {!complete && (
               <div className="flex  gap-5">
                 <button
                   disabled={currentStep < 2}
@@ -62,10 +49,14 @@ function CheckoutPage() {
                   {currentStep === steps.length ? "Finish" : "Next"}
                 </button>
               </div>
-            )}
+            )} */}
+            <div className=" flex justify-between">
+              <Link to={"/shop"}>Continue Shopping</Link>
+              <button onClick={() => clearCart()}>Clear Shopping Cart</button>
+            </div>
           </div>
-          <div className="  mt-2 flex flex-col items-center justify-start w-full md:w-1/3">
-            <CheckoutCard onClick={() => nextHandler()} />
+          <div className="mt-2 flex flex-col items-center justify-start w-full md:w-1/3">
+            <CheckoutCard />
           </div>
         </div>
       )}
