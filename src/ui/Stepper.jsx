@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
+import { useDroneData } from "../context/DroneContext";
 import "./Stepper.css";
 import { TiTick } from "react-icons/ti";
 
-function Stepper({ currentStep, complete, steps }) {
+function Stepper() {
+  const { currentStep, complete, steps } = useDroneData();
   return (
     <>
       <div className="flex mt-3 justify-between ">

@@ -35,6 +35,12 @@ function DroneProvider({ children }) {
       : setCurrentStep((prev) => prev + 1);
   };
 
+  const PrevHandler = (navigate) => {
+    currentStep === steps.length
+      ? setComplete(true)
+      : setCurrentStep((prev) => prev - 1);
+  };
+
   const [users, setUsers] = useState([
     {
       id: 0,
@@ -385,7 +391,6 @@ function DroneProvider({ children }) {
         drone.id === productId ? { ...drone, wishlist: !drone.wishlist } : drone
       )
     );
-    s;
   };
 
   // Function to handle removing a product from cart by productId
@@ -444,6 +449,7 @@ function DroneProvider({ children }) {
         currentStep,
         complete,
         steps,
+        PrevHandler,
       }}
     >
       {children}

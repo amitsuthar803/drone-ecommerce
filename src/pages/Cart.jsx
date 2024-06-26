@@ -1,6 +1,6 @@
 import Stepper from "../ui/Stepper";
 import { useDroneData } from "../context/DroneContext";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function Cart() {
   const { currentUser, currentStep, complete, steps } = useDroneData();
@@ -14,7 +14,7 @@ function Cart() {
   return (
     <div className="flex justify-center items-center text-center w-full flex-col">
       <h2 className="font-semibold text-2xl">Shopping Cart</h2>
-      <Stepper currentStep={currentStep} complete={complete} steps={steps} />
+      <Stepper />
 
       <Outlet />
     </div>
