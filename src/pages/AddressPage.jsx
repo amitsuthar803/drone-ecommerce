@@ -6,6 +6,8 @@ function AddressPage() {
   const { complete, currentStep, PrevHandler, nextHandler, steps } =
     useDroneData();
 
+  console.log(currentStep);
+
   const navigate = useNavigate();
 
   return (

@@ -37,7 +37,7 @@ function DroneProvider({ children }) {
 
   const PrevHandler = (navigate) => {
     currentStep === steps.length
-      ? setComplete(true)
+      ? setComplete(false)
       : setCurrentStep((prev) => prev - 1);
   };
 
@@ -449,6 +449,7 @@ function DroneProvider({ children }) {
         currentStep,
         complete,
         steps,
+        setCurrentStep,
         PrevHandler,
       }}
     >
