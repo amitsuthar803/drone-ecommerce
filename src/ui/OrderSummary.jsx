@@ -6,7 +6,7 @@ function CheckoutCard() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex flex-col   justify-start border-[1px]  shadow-sm border-[#666] items-start bg-gray-200 p-4 w-full">
+    <div className="flex flex-col md:w-1/3   justify-start border-[1px]  shadow-sm border-[#666] items-start bg-gray-200 p-4 w-full">
       <h3
         className={`${
           open && " border-b-[1px] pb-1  border-[#888] "
