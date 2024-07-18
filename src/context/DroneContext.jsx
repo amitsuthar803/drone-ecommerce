@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import drone1 from "../../assets/drone1.png";
@@ -18,29 +18,12 @@ import toast from "react-hot-toast";
 const DroneContext = createContext();
 
 function DroneProvider({ children }) {
+  const [wishlistData, setWishListData] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
-
-  // State for currently logged-in user
   const [currentUserId, setCurrentUserId] = useState(0);
-
   const [selectedDrone, setSelectedDrone] = useState({});
-
   const [currentStep, setCurrentStep] = useState(1);
   const [complete, setComplete] = useState(false);
-  const steps = ["Cart", "Address", "Payment"];
-
-  const nextHandler = (navigate) => {
-    currentStep === steps.length
-      ? setComplete(true)
-      : setCurrentStep((prev) => prev + 1);
-  };
-
-  const PrevHandler = (navigate) => {
-    currentStep === steps.length
-      ? setComplete(false)
-      : setCurrentStep((prev) => prev - 1);
-  };
-
   const [users, setUsers] = useState([
     {
       id: 0,
@@ -210,9 +193,19 @@ function DroneProvider({ children }) {
         "Feel the thrill of high-speed flights and exhilarating aerial maneuvers with this fun-loving drone designed for recreational pilots.",
     },
   ]);
+  const steps = ["Cart", "Address", "Payment"];
 
-  // dronesDataState is a dynamic state variable that can change during the application's lifecycle, reflecting the current state of the drones.
-  const [dronesDataState, setDronesDataState] = useState(dronesData);
+  const nextHandler = (navigate) => {
+    currentStep === steps.length
+      ? setComplete(true)
+      : setCurrentStep((prev) => prev + 1);
+  };
+
+  const PrevHandler = (navigate) => {
+    currentStep === steps.length
+      ? setComplete(false)
+      : setCurrentStep((prev) => prev - 1);
+  };
 
   const category = [
     "All",
@@ -238,6 +231,27 @@ function DroneProvider({ children }) {
           : user
       )
     );
+  };
+
+  const badgeColor = (type) => {
+    switch (type) {
+      case "Underwater":
+        return "bg-[#0080a721] text-[#0081a7]";
+      case "Fun":
+        return "bg-[#ef233b1d] text-[#ef233c]";
+      case "Industrial":
+        return "bg-[#ffb9082f] text-[#ee9b00]";
+      case "Agri":
+        return "bg-[#57cc9924] text-[#43aa8b]";
+      case "Li-dar":
+        return "bg-[#90a95534] text-[#31572c]";
+      case "Camera":
+        return "bg-[#e4e4e4] text-[#1C2C42]";
+      case "Racing":
+        return "bg-[#1c2c4218] text-[#bf0603]";
+      default:
+        return ""; // Default to no border
+    }
   };
 
   // Function to update the cart for the current user
@@ -428,6 +442,17 @@ function DroneProvider({ children }) {
     });
   };
 
+  useEffect(() => {
+    function getWishlistData() {
+      const filteredDrones = dronesData.filter((drone) =>
+        currentUser.wishlistItems.includes(drone.id)
+      );
+      setWishListData(filteredDrones);
+    }
+
+    getWishlistData();
+  }, [currentUser.wishlistItems, dronesData]);
+
   return (
     <DroneContext.Provider
       value={{
@@ -451,6 +476,8 @@ function DroneProvider({ children }) {
         steps,
         setCurrentStep,
         PrevHandler,
+        wishlistData,
+        badgeColor,
       }}
     >
       {children}

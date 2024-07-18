@@ -20,6 +20,7 @@ function Shop() {
     category,
     handleWishlist,
     users,
+    badgeColor,
     currentUserId,
   } = useDroneData();
 
@@ -42,26 +43,6 @@ function Shop() {
     return currentUserData?.wishlistItems.includes(productId);
   };
 
-  const badgeColor = (type) => {
-    switch (type) {
-      case "Underwater":
-        return "bg-[#0080a721] text-[#0081a7]";
-      case "Fun":
-        return "bg-[#ef233b1d] text-[#ef233c]";
-      case "Industrial":
-        return "bg-[#ffb9082f] text-[#ee9b00]";
-      case "Agri":
-        return "bg-[#57cc9924] text-[#43aa8b]";
-      case "Li-dar":
-        return "bg-[#90a95534] text-[#31572c]";
-      case "Camera":
-        return "bg-[#e4e4e4] text-[#1C2C42]";
-      case "Racing":
-        return "bg-[#1c2c4218] text-[#bf0603]";
-      default:
-        return ""; // Default to no border
-    }
-  };
   const handleViewDetails = (id) => {
     navigate(`/product/${id}`);
   };

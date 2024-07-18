@@ -1,17 +1,9 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDroneData } from "../context/DroneContext";
 import RazorpayComponent from "./RazorpayComponent";
 
 function PaymentMethod() {
-  const {
-    complete,
-    currentStep,
-    PrevHandler,
-    setCurrentStep,
-    nextHandler,
-    steps,
-  } = useDroneData();
+  const { complete, currentStep, PrevHandler, setCurrentStep } = useDroneData();
   const navigate = useNavigate();
 
   return (
