@@ -3,7 +3,7 @@ import ProgressBtn from "./ProgressBtn";
 
 function ShippingAddress() {
   return (
-    <div className="flex flex-col  p-5 text-start   justify-start  flex-1">
+    <div className="flex flex-col text-start   justify-start  flex-1">
       <div>
         <h2 className="text-xl font-semibold text-heading">Shipping Address</h2>
 
