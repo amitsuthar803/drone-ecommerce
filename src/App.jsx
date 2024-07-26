@@ -12,6 +12,7 @@ import CheckoutPage from "./pages/CheckoutPage";
 import AddressPage from "./pages/AddressPage";
 import PaymentPage from "./pages/PaymentPage";
 import WishlistPage from "./pages/WishlistPage";
+import UserPage from "./pages/UserPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="/user" element={<UserPage />} />
             <Route path="wishlist" element={<WishlistPage />} />
             <Route path="cart" element={<Cart />}>
               <Route index element={<CheckoutPage />} />

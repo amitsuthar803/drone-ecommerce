@@ -40,34 +40,46 @@ function Header({ setShowSidebar }) {
 
         <nav className="  gap-4 max-sm:hidden  flex-row  flex items-center ">
           <NavLink
-            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            className={({ isActive }) =>
+              `${isActive && " font-semibold"} hover:border-b-2 border-black`
+            }
             to="/"
           >
             Home
           </NavLink>
           <NavLink
-            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            className={({ isActive }) =>
+              `${isActive && " font-semibold"} hover:border-b-2 border-black`
+            }
             to="shop"
           >
             Shop
           </NavLink>
           <NavLink
-            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            className={({ isActive }) =>
+              `${isActive && " font-semibold"} hover:border-b-2 border-black`
+            }
             to="about"
           >
             About
           </NavLink>
           <NavLink
-            className={({ isActive }) => `${isActive && " font-semibold"}`}
+            className={({ isActive }) =>
+              `${isActive && " font-semibold"} hover:border-b-2 border-black`
+            }
             to="contact"
           >
             Contact Us
           </NavLink>
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 ">
           <FaSearch className=" cursor-pointer" />
-          <PiUserBold className=" cursor-pointer" size={20} />
+          <PiUserBold
+            onClick={() => navigate("user")}
+            className=" cursor-pointer"
+            size={20}
+          />
 
           <div
             onClick={() => navigate("wishlist")}
