@@ -13,11 +13,13 @@ import AddressPage from "./pages/AddressPage";
 import PaymentPage from "./pages/PaymentPage";
 import WishlistPage from "./pages/WishlistPage";
 import UserPage from "./pages/UserPage";
+import ScrollToTop from "./ui/ScrollToTop";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route element={<AppLayout />}>
             <Route index element={<Home />} />

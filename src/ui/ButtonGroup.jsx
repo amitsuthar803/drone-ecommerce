@@ -8,8 +8,10 @@ function ButtonGroup({ buttons, isSelected, setIsSelected }) {
         return (
           <button
             onClick={() => setIsSelected(index)}
-            className={`capitalize p-2 max-md:text-[10px] font-semibold    active:text-white  hover:bg-btn_dark hover:text-white   w-full text-center ${
-              isSelected === index ? "bg-btn_dark text-white" : "bg-gray-300"
+            className={` max-md:rounded-lg capitalize p-2 max-md:text-[12px] font-semibold    active:text-white  hover:bg-btn_dark hover:text-white   w-full text-center ${
+              isSelected === index
+                ? "bg-btn_dark text-white max-md:bg-white max-md:text-black"
+                : " max-md:bg-transparent"
             }`}
             key={index}
           >

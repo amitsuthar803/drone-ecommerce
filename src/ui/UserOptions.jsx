@@ -10,7 +10,7 @@ function UserOptions({ isSelected, setIsSelected }) {
   ];
 
   return (
-    <div className="flex bg-gray-100 h-full flex-col justify-start p-5  max-md:w-full items-center m-auto">
+    <div className="flex bg-gray-200 h-full max-md:rounded-lg flex-col justify-start max-md:p-2 p-5  max-md:w-full items-center m-auto">
       <ButtonGroup
         isSelected={isSelected}
         setIsSelected={setIsSelected}

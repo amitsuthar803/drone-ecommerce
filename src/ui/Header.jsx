@@ -23,7 +23,7 @@ function Header({ setShowSidebar }) {
   };
 
   return (
-    <header className="z-10 h-[75px] relative drop-shadow-sm flex justify-center m-auto border-b-2 items-center w-full bg-[#FFFFFF]">
+    <header className="h-[60px] z-20  fixed top-0 drop-shadow-sm flex justify-center m-auto border-b-2 items-center w-full bg-white">
       <div className=" px-5 w-[1111px] flex justify-between items-center">
         <GiHamburgerMenu
           onClick={handleHamburgerClick}

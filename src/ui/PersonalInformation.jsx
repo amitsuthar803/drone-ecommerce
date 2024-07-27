@@ -1,12 +1,25 @@
 import React from "react";
+import { BsCalendar2Date } from "react-icons/bs";
+import { FaGlobeAsia } from "react-icons/fa";
+import { IoPersonOutline } from "react-icons/io5";
+import { MdAlternateEmail } from "react-icons/md";
+import { TbLanguageHiragana } from "react-icons/tb";
 
 function PersonalInformation() {
   const userData = [
-    { field: "name", name: "amit suthar" },
-    { field: "Date of birth", name: "10 mar 2000" },
-    { field: "country region", name: "ahemdabad gujrat" },
-    { field: "language", name: "English" },
-    { field: "email", name: "amitsuthar803@gmail.com" },
+    { field: "name", name: "amit suthar", icon: <IoPersonOutline /> },
+    { field: "Date of birth", name: "10 mar 2000", icon: <BsCalendar2Date /> },
+    {
+      field: "country region",
+      name: "ahemdabad gujrat",
+      icon: <FaGlobeAsia />,
+    },
+    { field: "language", name: "English", icon: <TbLanguageHiragana /> },
+    {
+      field: "email",
+      name: "amitsuthar803@gmail.com",
+      icon: <MdAlternateEmail />,
+    },
   ];
 
   return (
@@ -19,20 +32,20 @@ function PersonalInformation() {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 max-md:grid-cols-1    gap-5">
+      <div className="grid grid-cols-2 max-md:grid-cols-1 max-md:gap-2 gap-4">
         {/* card */}
 
         {userData.map((user, index) => {
           return (
             <div
               key={index}
-              className="flex flex-col bg-gray-100 justify-center items-start w-full shadow-md rounded-md p-4"
+              className="flex mt-4 flex-col bg-gray-200 justify-center items-start w-full shadow-md rounded-md p-4"
             >
-              <div className="flex justify-between items-center">
-                <h3>{user.field}</h3>
-                <span>🤵🏻</span>
+              <div className="flex justify-between gap-2 w-full items-center">
+                <h3 className="font-medium capitalize">{user.field}</h3>
+                {user.icon}
               </div>
-              <p>{user.name}</p>
+              <p className="capitalize mt-2 text-gray-600">{user.name}</p>
             </div>
           );
         })}

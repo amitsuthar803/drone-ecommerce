@@ -33,7 +33,7 @@ function AppLayout() {
   });
 
   return (
-    <div className="app-layout flex flex-col m-auto relative h-[100vh]">
+    <div className="app-layout flex flex-col m-auto relative">
       <Header setShowSidebar={setShowSidebar} />
 
       <Sidebar
@@ -42,7 +42,7 @@ function AppLayout() {
         sidebarRef={sidebarRef}
       />
 
-      <div className="content overflow-y-scroll h-full flex w-full justify-center m-auto">
+      <div className="content overflow-y-scroll h-full mt-[60px] flex w-full justify-center m-auto">
         <Main>
           <Container>
             <Outlet />

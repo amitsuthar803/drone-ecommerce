@@ -36,7 +36,7 @@ function ProductDetail() {
         />
       </div>
 
-      <div className=" flex-1 flex p-5 max-sm:bg-[#FFF] z-30  mt-[-60px] max-sm:rounded-t-[20px] md:items-start justify-start flex-col">
+      <div className=" flex-1 flex p-5 max-sm:bg-[#FFF]  max-md:z-10  mt-[-60px] max-sm:rounded-t-[20px] md:items-start justify-start flex-col">
         <h1 className="font-semibold text-[1.2rem] lg:text-[1.5rem]">
           {selectProduct.name}
         </h1>
