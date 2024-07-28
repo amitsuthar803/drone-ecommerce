@@ -8,15 +8,14 @@ const AuthRoute = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setLoading(false);
-        console.log("unauthorized");
-        setLoading(false);
+      if (!user) {
         navigate("/login");
+      } else {
+        setLoading(false);
       }
     });
     return () => unsubscribe();
-  }, [auth, navigate]);
+  }, [navigate]);
 
   if (loading) return <p>Loading...</p>;
 

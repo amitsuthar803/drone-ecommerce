@@ -25,6 +25,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route
+            path="/"
             element={
               <AuthRoute>
                 <AppLayout />
@@ -33,7 +34,7 @@ function App() {
           >
             <Route index element={<Home />} />
             <Route path="shop" element={<Shop />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="product/:id" element={<ProductDetail />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="/user" element={<UserPage />} />

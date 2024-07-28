@@ -10,9 +10,9 @@ import {
   PiUserBold,
 } from "react-icons/pi";
 import { useDroneData } from "../context/DroneContext";
-import { LuLogOut } from "react-icons/lu";
-import { FiLogOut } from "react-icons/fi";
+
 import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 
 function Header({ setShowSidebar }) {
   const { users, currentUserId } = useDroneData();
@@ -29,10 +29,10 @@ function Header({ setShowSidebar }) {
   // logoutFunction
   async function handleLogout() {
     try {
-      await auth.signOut;
+      await signOut(auth);
       navigate("/login");
     } catch (err) {
-      console.log("Error while Loggin Out!", err.message);
+      console.log("Error while logging out!", err.message);
     }
   }
 
