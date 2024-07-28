@@ -453,6 +453,15 @@ function DroneProvider({ children }) {
     getWishlistData();
   }, [currentUser.wishlistItems, dronesData]);
 
+  // function to calculatr total price based on quantity
+  function calculateTotalPrice(user) {
+    let totalPrice = 0;
+    user.cartItems.forEach((item) => {
+      totalPrice += item.qty * item.price;
+    });
+    return totalPrice;
+  }
+
   return (
     <DroneContext.Provider
       value={{
@@ -478,6 +487,7 @@ function DroneProvider({ children }) {
         PrevHandler,
         wishlistData,
         badgeColor,
+        calculateTotalPrice,
       }}
     >
       {children}

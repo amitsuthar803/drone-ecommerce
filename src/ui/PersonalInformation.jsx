@@ -1,13 +1,37 @@
-import React from "react";
+import { doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { BsCalendar2Date } from "react-icons/bs";
 import { FaGlobeAsia } from "react-icons/fa";
 import { IoPersonOutline } from "react-icons/io5";
 import { MdAlternateEmail } from "react-icons/md";
 import { TbLanguageHiragana } from "react-icons/tb";
+import { auth, db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 function PersonalInformation() {
+  const navigate = useNavigate();
+
+  const [userName, setUserName] = useState("");
+  // get data from firebase store
+  const fetchUserData = async () => {
+    auth.onAuthStateChanged(async (user) => {
+      console.log(user);
+      const docRef = doc(db, "Users", user.uid);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setUserName(docSnap.data().username);
+      } else {
+        console.log("user is not logged in");
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   const userData = [
-    { field: "name", name: "amit suthar", icon: <IoPersonOutline /> },
+    { field: "name", name: userName, icon: <IoPersonOutline /> },
     { field: "Date of birth", name: "10 mar 2000", icon: <BsCalendar2Date /> },
     {
       field: "country region",
@@ -45,7 +69,7 @@ function PersonalInformation() {
                 <h3 className="font-medium capitalize">{user.field}</h3>
                 {user.icon}
               </div>
-              <p className="capitalize mt-2 text-gray-600">{user.name}</p>
+              <p className="mt-2 text-gray-600">{user.name}</p>
             </div>
           );
         })}

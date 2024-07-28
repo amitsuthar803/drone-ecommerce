@@ -6,9 +6,13 @@ import { FaSearch } from "react-icons/fa";
 import {
   PiHeartStraightBold,
   PiShoppingCartBold,
+  PiSignOutBold,
   PiUserBold,
 } from "react-icons/pi";
 import { useDroneData } from "../context/DroneContext";
+import { LuLogOut } from "react-icons/lu";
+import { FiLogOut } from "react-icons/fi";
+import { auth } from "../firebase";
 
 function Header({ setShowSidebar }) {
   const { users, currentUserId } = useDroneData();
@@ -21,6 +25,16 @@ function Header({ setShowSidebar }) {
     event.stopPropagation(); // Stop the event from propagating to the document
     setShowSidebar((show) => !show);
   };
+
+  // logoutFunction
+  async function handleLogout() {
+    try {
+      await auth.signOut;
+      navigate("/login");
+    } catch (err) {
+      console.log("Error while Loggin Out!", err.message);
+    }
+  }
 
   return (
     <header className="h-[60px] z-20  fixed top-0 drop-shadow-sm flex justify-center m-auto border-b-2 items-center w-full bg-white">
@@ -78,6 +92,12 @@ function Header({ setShowSidebar }) {
           <PiUserBold
             onClick={() => navigate("user")}
             className=" cursor-pointer"
+            size={20}
+          />
+
+          <PiSignOutBold
+            className=" cursor-pointer"
+            onClick={handleLogout}
             size={20}
           />
 

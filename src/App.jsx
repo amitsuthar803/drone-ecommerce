@@ -14,6 +14,9 @@ import PaymentPage from "./pages/PaymentPage";
 import WishlistPage from "./pages/WishlistPage";
 import UserPage from "./pages/UserPage";
 import ScrollToTop from "./ui/ScrollToTop";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import AuthRoute from "./auth/AuthRoute";
 
 function App() {
   return (
@@ -21,7 +24,13 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route element={<AppLayout />}>
+          <Route
+            element={
+              <AuthRoute>
+                <AppLayout />
+              </AuthRoute>
+            }
+          >
             <Route index element={<Home />} />
             <Route path="shop" element={<Shop />} />
             <Route path="/product/:id" element={<ProductDetail />} />
@@ -35,6 +44,8 @@ function App() {
               <Route path="payment" element={<PaymentPage />} />
             </Route>
           </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
       <Toaster

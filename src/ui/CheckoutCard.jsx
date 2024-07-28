@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function CheckoutCard() {
   const [open, setOpen] = useState(false);
-  const { nextHandler } = useDroneData();
+  const { nextHandler, calculateTotalPrice } = useDroneData();
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -130,7 +130,7 @@ function CheckoutCard() {
             </div>
             <div className="flex text-[16px] justify-between font-semibold">
               <h3>Order Total</h3>
-              <h3>1000.00₹</h3>
+              <h3>{calculateTotalPrice}₹</h3>
             </div>
           </div>
         </div>
