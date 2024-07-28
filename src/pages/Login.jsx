@@ -11,8 +11,8 @@ function Login() {
 
   // state Variables for managing state, email, password, and error message
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("amitsuthar@test.com");
+  const [password, setPassword] = useState("123456");
   // const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -54,6 +54,7 @@ function Login() {
             <input
               type="password"
               placeholder="Password"
+              value={123456}
               className="w-full text-white py-2 mb-4 bg-transparent border-b border-gray-500 focus:outline-none"
               onChange={(e) => setPassword(e.target.value)}
             />

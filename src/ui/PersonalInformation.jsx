@@ -9,8 +9,6 @@ import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
 function PersonalInformation() {
-  const navigate = useNavigate();
-
   const [userName, setUserName] = useState("");
   // get data from firebase store
   const fetchUserData = async () => {
@@ -46,7 +44,7 @@ function PersonalInformation() {
     },
   ];
 
-  return (
+  return userName ? (
     <div className="p-4">
       <div>
         <h3 className="font-semibold text-lg">Personal information</h3>
@@ -75,6 +73,8 @@ function PersonalInformation() {
         })}
       </div>
     </div>
+  ) : (
+    <span>Loading...</span>
   );
 }
 
