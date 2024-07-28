@@ -32,8 +32,8 @@ function Login() {
   };
 
   return (
-    <div className="w-full justify-center items-center  flex">
-      <div className=" h-full w-full bg-black flex flex-col p-20 justify-center">
+    <div className="w-full h-screen bg-black justify-center items-center  flex">
+      <div className="w-full flex flex-col p-20 max-md:p-10 justify-center">
         <form
           onSubmit={handleSubmit}
           className="w-full flex flex-col max-w-[450px] mx-auto"
@@ -81,13 +81,13 @@ function Login() {
           </div>
 
           {/* {button to login with google} */}
-          <button
+          {/* <button
             className="w-full bg-white justify-center mt-4 text-black font-semibold rounded-md p-3 text-center flex items-center"
             // onClick={signInWithGoogle}
             // disabled={authing}
           >
             Log In With Google
-          </button>
+          </button> */}
         </form>
         {/* link to sign up page */}
         <div className="w-full flex items-center justify-center mt-5 ">

@@ -48,8 +48,8 @@ function SignUp() {
   };
 
   return (
-    <div className="w-full justify-center items-center  flex">
-      <div className=" h-full bg-black flex flex-col p-20 justify-center">
+    <div className="w-full  h-screen justify-center items-center  flex">
+      <div className=" h-full bg-black flex flex-col p-20 max-md:p-10 justify-center">
         <form
           onSubmit={handleRegister}
           className="w-full flex flex-col max-w-[450px] mx-auto"
@@ -112,13 +112,13 @@ function SignUp() {
           </div>
 
           {/* singUp with google */}
-          <button
+          {/* <button
             // onClick={signUpWithGoogle}
             // disabled={authing}
             className="w-full bg-white mt-2 text-black font-semibold rounded-md p-3 text-center flex justify-center  items-center"
           >
             Sign Up With Google
-          </button>
+          </button> */}
         </form>
 
         {/* Link to login page */}

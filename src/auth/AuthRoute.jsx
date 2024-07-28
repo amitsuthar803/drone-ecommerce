@@ -19,7 +19,7 @@ const AuthRoute = ({ children }) => {
 
   if (loading) return <p>Loading...</p>;
 
-  return <div>{children}</div>;
+  return <div className="">{children}</div>;
 };
 
 export default AuthRoute;
