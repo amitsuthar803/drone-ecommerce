@@ -38,6 +38,7 @@ function SignUp() {
       toast.success("User Registered Successfully!", {
         position: "top-center",
       });
+      navigate("/");
     } catch (error) {
       console.log(error.message);
       toast.error(error.message, {
