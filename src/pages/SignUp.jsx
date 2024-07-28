@@ -48,8 +48,8 @@ function SignUp() {
   };
 
   return (
-    <div className="w-full  h-screen justify-center items-center  flex">
-      <div className=" h-full bg-black flex flex-col p-20 max-md:p-10 justify-center">
+    <div className="w-full h-screen bg-black  justify-center items-center overflow-hidden  flex">
+      <div className="flex  flex-col p-20 max-md:p-10  justify-center">
         <form
           onSubmit={handleRegister}
           className="w-full flex flex-col max-w-[450px] mx-auto"
