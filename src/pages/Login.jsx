@@ -34,7 +34,7 @@ function Login() {
   return (
     <div className="w-full h-screen flex-col bg-black justify-center items-center  flex">
       <span className="flex items-center justify-center gap-4">
-        <img src="/assets/favicon.png" width={50} alt="" />
+        <img src="./assets/favicon.png" width={50} alt="" />
         <h2 className="text-white capitalize">Spy World</h2>
       </span>
 

@@ -17,8 +17,6 @@ import ScrollToTop from "./ui/ScrollToTop";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import AuthRoute from "./auth/AuthRoute";
-import UploadDrones from "./pages/Uploader";
-import Test from "./pages/Test";
 
 function App() {
   return (

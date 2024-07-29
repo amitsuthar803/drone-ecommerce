@@ -21,7 +21,7 @@ function SignUp() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match", {
         position: "top-center",
@@ -60,7 +60,7 @@ function SignUp() {
     <div className="w-full h-screen flex-col bg-black  justify-center items-center overflow-hidden  flex">
       <div className="flex  flex-col p-20 max-md:p-10  justify-center">
         <span className="flex items-center justify-center gap-4 mb-8">
-          <img src="/assets/favicon.png" width={50} alt="" />
+          <img src="./assets/favicon.png" width={50} alt="" />
           <h2 className="text-white capitalize">Spy World</h2>
         </span>
         <form
