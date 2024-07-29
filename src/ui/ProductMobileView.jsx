@@ -4,8 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import QuantityButton from "./QuantityButton";
 
 function ProductMobileView() {
-  const { currentUser, handleWishlist, removeFromCart, updateCart } =
-    useDroneData();
+  const { currentUser, handleWishlist, removeFromCart } = useDroneData();
 
   const isInWishlist = (productId) => {
     return currentUser?.wishlistItems.includes(productId);
@@ -16,7 +15,7 @@ function ProductMobileView() {
       {currentUser.cartItems.map((item) => (
         <div key={item.id} className="flex justify-start gap-5">
           <img
-            src={item.path}
+            src={item.imageUrl}
             className="bg-gray-100 p-2 rounded-lg w-[125px]"
             alt=""
           />

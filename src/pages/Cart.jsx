@@ -3,13 +3,11 @@ import { useDroneData } from "../context/DroneContext";
 import { Outlet } from "react-router-dom";
 
 function Cart() {
-  const { currentUser, currentStep, complete, steps } = useDroneData();
-
   // Calculate total items in cart
-  const totalItemsInCart = currentUser.cartItems.reduce(
-    (total, item) => total + item.qty,
-    0
-  );
+  // const totalItemsInCart = currentUser?.cartItems.reduce(
+  //   (total, item) => total + item.qty,
+  //   0
+  // );
 
   return (
     <div className="flex justify-start items-center text-center w-full flex-col">

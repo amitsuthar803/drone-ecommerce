@@ -4,8 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import QuantityButton from "./QuantityButton";
 
 function ProductTableView() {
-  const { currentUser, updateCart, removeFromCart, handleWishlist } =
-    useDroneData();
+  const { currentUser, removeFromCart, handleWishlist } = useDroneData();
 
   const isInWishlist = (productId) => {
     return currentUser?.wishlistItems.includes(productId);
@@ -29,7 +28,7 @@ function ProductTableView() {
             <tr key={item.id}>
               <td className="flex justify-center py-3 items-center">
                 <img
-                  src={item.path}
+                  src={item.imageUrl}
                   className=" max-sm:w-[70px] w-[100px] "
                   alt=""
                 />

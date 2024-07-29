@@ -15,15 +15,15 @@ function WishlistPage() {
     setSelectedDrone,
     wishlistData,
     badgeColor,
-    currentUserId,
+    currentUser,
     handleWishlist,
-    users,
+    wishlistDrones,
   } = useDroneData();
 
-  const currentUserData = users.find((u) => u.id === currentUserId);
+  console.log(wishlistData);
 
   const isInWishlist = (productId) => {
-    return currentUserData?.wishlistItems.includes(productId);
+    return currentUser?.wishlistItems.includes(productId);
   };
 
   const handleSelect = (drone) => {
@@ -42,7 +42,7 @@ function WishlistPage() {
         wishlist
       </h2>
       <div className="grid grid-cols-2  md:grid-cols-3  items-start md:gap-14  mt-10 p-2 gap-5 overflow-y-scroll">
-        {wishlistData?.map((drone) => (
+        {wishlistDrones?.map((drone) => (
           <div
             key={drone.id}
             className=" max-sm:p-3 p-4 border-[1px] border-[#F6F6F6] shadow-md rounded-lg bg-[#FFFFFF] flex flex-col"
@@ -50,7 +50,7 @@ function WishlistPage() {
             <div className="py-5 relative rounded-md bg-[#F6F6F6]">
               <img
                 className="w-[250px] m-auto flex items-center justify-center"
-                src={drone.path}
+                src={drone.imageUrl}
                 alt=""
               />
               <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#ececec] p-1 rounded-full">

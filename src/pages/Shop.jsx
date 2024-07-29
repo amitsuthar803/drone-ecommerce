@@ -11,17 +11,16 @@ import { PiHeartStraightBold, PiHeartStraightFill } from "react-icons/pi";
 
 function Shop() {
   const [showModal, setShowModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const {
-    selectedCategory,
     dronesData,
     setSelectedDrone,
-    setSelectedCategory,
     category,
     handleWishlist,
-    users,
     badgeColor,
-    currentUserId,
+
+    currentUser,
   } = useDroneData();
 
   const navigate = useNavigate();
@@ -34,13 +33,10 @@ function Shop() {
   const handleSelect = (drone) => {
     setSelectedDrone(drone);
     setShowModal(true);
-    console.log(drone);
   };
 
-  const currentUserData = users.find((u) => u.id === currentUserId);
-
   const isInWishlist = (productId) => {
-    return currentUserData?.wishlistItems.includes(productId);
+    return currentUser?.wishlistItems.includes(productId);
   };
 
   const handleViewDetails = (id) => {
@@ -98,7 +94,7 @@ function Shop() {
               <div className="py-5 relative rounded-md bg-[#F6F6F6]">
                 <img
                   className="w-[250px] m-auto flex items-center justify-center"
-                  src={drone.path}
+                  src={drone.imageUrl}
                   alt=""
                 />
                 <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#ececec] p-1 rounded-full">

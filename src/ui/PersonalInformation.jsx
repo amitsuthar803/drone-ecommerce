@@ -9,12 +9,10 @@ import { auth, db } from "../firebase";
 import { useDroneData } from "../context/DroneContext";
 
 function PersonalInformation() {
-  const { currentLogUser } = useDroneData();
-
-
+  const { currentUser } = useDroneData();
 
   const userData = [
-    { field: "name", name: currentLogUser.userName, icon: <IoPersonOutline /> },
+    { field: "name", name: currentUser.username, icon: <IoPersonOutline /> },
     { field: "Date of birth", name: "10 mar 2000", icon: <BsCalendar2Date /> },
     {
       field: "country region",
@@ -29,7 +27,7 @@ function PersonalInformation() {
     },
   ];
 
-  return userName ? (
+  return currentUser ? (
     <div className="p-4">
       <div>
         <h3 className="font-semibold text-lg">Personal information</h3>

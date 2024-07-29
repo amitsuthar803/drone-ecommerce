@@ -15,11 +15,9 @@ import { auth } from "../firebase";
 import { signOut } from "firebase/auth";
 
 function Header({ setShowSidebar }) {
-  const { users, currentUserId } = useDroneData();
+  const { currentUser } = useDroneData();
 
   const navigate = useNavigate();
-
-  const currentUserData = users.find((u) => u.id === currentUserId);
 
   const handleHamburgerClick = (event) => {
     event.stopPropagation(); // Stop the event from propagating to the document
@@ -107,14 +105,14 @@ function Header({ setShowSidebar }) {
           >
             <PiHeartStraightBold className=" z-10 " size={20} />
             <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold bg-red-600 w-2 h-2 p-2 rounded-full z-30">
-              {currentUserData?.wishlistItems.length}
+              {currentUser?.wishlistItems.length}
             </span>
           </div>
 
           <Link className="relative" to={"cart"}>
             <PiShoppingCartBold className=" z-10 cursor-pointer" size={20} />
             <span className="absolute flex items-center justify-center top-0 right-[-5px] text-[10px] mt-[-5px] text-white font-semibold w-2 h-2 bg-black p-2 rounded-full z-30">
-              {currentUserData?.cartItems.length}
+              {currentUser?.cartItems.length}
             </span>
           </Link>
         </div>

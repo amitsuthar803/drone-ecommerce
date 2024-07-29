@@ -23,7 +23,7 @@ function Modal({ className, setShowModal }) {
           className=" cursor-pointer absolute top-2 right-2"
         />
 
-        <img src={selectedDrone.path} alt="" />
+        <img src={selectedDrone.imageUrl} alt="" />
       </div>
     </div>
   );

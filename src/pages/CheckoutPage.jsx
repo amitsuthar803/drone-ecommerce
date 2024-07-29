@@ -7,9 +7,10 @@ import CheckoutCard from "../ui/CheckoutCard";
 
 function CheckoutPage() {
   const { currentUser, clearCart } = useDroneData();
+  console.log(currentUser);
 
   // Calculate total items in cart
-  const totalItemsInCart = currentUser.cartItems.reduce(
+  const totalItemsInCart = currentUser?.cartItems.reduce(
     (total, item) => total + item.qty,
     0
   );
