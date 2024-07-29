@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
+// Handle that route are protected
+
 const AuthRoute = ({ children }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);

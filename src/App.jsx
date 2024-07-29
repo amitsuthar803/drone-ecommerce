@@ -17,6 +17,8 @@ import ScrollToTop from "./ui/ScrollToTop";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import AuthRoute from "./auth/AuthRoute";
+import UploadDrones from "./pages/Uploader";
+import Test from "./pages/Test";
 
 function App() {
   return (
@@ -33,17 +35,19 @@ function App() {
             }
           >
             <Route index element={<Home />} />
-            <Route path="shop" element={<Shop />} />
+            <Route path="/test" element={<Test />} />
+            {/* <Route path="shop" element={<Shop />} />
             <Route path="product/:id" element={<ProductDetail />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="/user" element={<UserPage />} />
+            <Route path="/upload" element={<UploadDrones />} />
             <Route path="wishlist" element={<WishlistPage />} />
             <Route path="cart" element={<Cart />}>
               <Route index element={<CheckoutPage />} />
               <Route path="address" element={<AddressPage />} />
               <Route path="payment" element={<PaymentPage />} />
-            </Route>
+            </Route> */}
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />

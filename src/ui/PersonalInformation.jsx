@@ -6,30 +6,15 @@ import { IoPersonOutline } from "react-icons/io5";
 import { MdAlternateEmail } from "react-icons/md";
 import { TbLanguageHiragana } from "react-icons/tb";
 import { auth, db } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { useDroneData } from "../context/DroneContext";
 
 function PersonalInformation() {
-  const [userName, setUserName] = useState("");
-  // get data from firebase store
-  const fetchUserData = async () => {
-    auth.onAuthStateChanged(async (user) => {
-      console.log(user);
-      const docRef = doc(db, "Users", user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setUserName(docSnap.data().username);
-      } else {
-        console.log("user is not logged in");
-      }
-    });
-  };
+  const { currentLogUser } = useDroneData();
 
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+
 
   const userData = [
-    { field: "name", name: userName, icon: <IoPersonOutline /> },
+    { field: "name", name: currentLogUser.userName, icon: <IoPersonOutline /> },
     { field: "Date of birth", name: "10 mar 2000", icon: <BsCalendar2Date /> },
     {
       field: "country region",

@@ -21,7 +21,13 @@ function SignUp() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    console.log(e);
+    
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match", {
+        position: "top-center",
+      });
+      return;
+    }
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -33,6 +39,9 @@ function SignUp() {
         await setDoc(doc(db, "Users", user.uid), {
           email: user.email,
           username: username,
+          wishlistItems: [],
+          cartItems: [],
+          userId: user.uid,
         });
       }
       toast.success("User Registered Successfully!", {
@@ -48,16 +57,20 @@ function SignUp() {
   };
 
   return (
-    <div className="w-full h-screen bg-black  justify-center items-center overflow-hidden  flex">
+    <div className="w-full h-screen flex-col bg-black  justify-center items-center overflow-hidden  flex">
       <div className="flex  flex-col p-20 max-md:p-10  justify-center">
+        <span className="flex items-center justify-center gap-4 mb-8">
+          <img src="/assets/favicon.png" width={50} alt="" />
+          <h2 className="text-white capitalize">Spy World</h2>
+        </span>
         <form
           onSubmit={handleRegister}
-          className="w-full flex flex-col max-w-[450px] mx-auto"
+          className="w-full flex   flex-col max-w-[450px] mx-auto"
         >
           {/* header section with title and welcome message */}
-          <div className="w-full flex flex-col mb-10 text-white">
+          <div className="w-full flex flex-col  text-white">
             <h3 className="text-4xl font-bold mb-2">Sign Up</h3>
-            <p className="text-lg mb-4">
+            <p className="text-md mb-4 ">
               Welcome! Please enter your information below to begin.
             </p>
           </div>
@@ -98,18 +111,18 @@ function SignUp() {
 
           {/* {Button to sign up with email and password} */}
           <div className="w-full flex flex-col mb-4">
-            <button className="w-full bg-transparent border p-3 border-white text-white my-2 font-semibold rounded-md">
+            <button className="w-full hover:bg-red-600 hover:text-black bg-transparent border p-3 border-white text-white my-2 font-semibold rounded-md">
               Sign Up With Email and Password
             </button>
           </div>
 
           {/* divide with OR */}
-          <div className="w-full flex  items-center justify-center relative py-4">
+          {/* <div className="w-full flex  items-center justify-center relative py-4">
             <div className="w-full h-[1px] bg-gray-500"></div>
             <p className="text-lg absolute text-gray-500 bg-btn_dark px-2">
               OR
             </p>
-          </div>
+          </div> */}
 
           {/* singUp with google */}
           {/* <button

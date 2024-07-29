@@ -32,7 +32,12 @@ function Login() {
   };
 
   return (
-    <div className="w-full h-screen bg-black justify-center items-center  flex">
+    <div className="w-full h-screen flex-col bg-black justify-center items-center  flex">
+      <span className="flex items-center justify-center gap-4">
+        <img src="/assets/favicon.png" width={50} alt="" />
+        <h2 className="text-white capitalize">Spy World</h2>
+      </span>
+
       <div className="w-full flex flex-col p-20 max-md:p-10 justify-center">
         <form
           onSubmit={handleSubmit}
@@ -62,7 +67,7 @@ function Login() {
           {/* button */}
           <div className="w-full flex flex-col mb-4">
             <button
-              className="w-full bg-transparent border p-3 border-white text-white my-2 font-semibold rounded-md"
+              className="w-full hover:bg-red-700 hover:text-black bg-transparent border p-3 border-white text-white my-2 font-semibold rounded-md"
               // onClick={signInWithEmail}
               // disabled={authing}
             >
@@ -73,12 +78,12 @@ function Login() {
           {/* {error && <div className="text-red-500 mb-4">{error}</div>} */}
 
           {/* Divider with 'OR'  text*/}
-          <div className="w-full flex items-center  justify-center relative py-4">
+          {/* <div className="w-full flex items-center  justify-center relative py-4">
             <div className="w-full h-[1px] bg-trueGray-500"></div>
             <p className="text-lg absolute text-gray-500 bg-btn_dark px-2">
               OR
             </p>
-          </div>
+          </div> */}
 
           {/* {button to login with google} */}
           {/* <button
