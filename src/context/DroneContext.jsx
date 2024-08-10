@@ -41,6 +41,7 @@ function DroneProvider({ children }) {
         ...doc.data(),
       }));
       setDronesData(dronesList);
+      setLoading(false);
     };
 
     fetchDrones();

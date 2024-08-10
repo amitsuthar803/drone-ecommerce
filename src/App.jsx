@@ -17,12 +17,14 @@ import ScrollToTop from "./ui/ScrollToTop";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import AuthRoute from "./auth/AuthRoute";
+import BasicDetails from "./pages/BasicDetails";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <ScrollToTop />
+
         <Routes>
           <Route
             path="/"
@@ -39,6 +41,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="/user" element={<UserPage />} />
+            <Route path="/basic" element={<BasicDetails />} />
             {/* <Route path="/upload" element={<UploadDrones />} /> */}
             <Route path="wishlist" element={<WishlistPage />} />
             <Route path="cart" element={<Cart />}>

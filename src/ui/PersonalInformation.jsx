@@ -7,6 +7,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { TbLanguageHiragana } from "react-icons/tb";
 import { auth, db } from "../firebase";
 import { useDroneData } from "../context/DroneContext";
+import { PiPhoneBold } from "react-icons/pi";
 
 function PersonalInformation() {
   const { currentUser } = useDroneData();
@@ -15,9 +16,14 @@ function PersonalInformation() {
     { field: "name", name: currentUser.username, icon: <IoPersonOutline /> },
     { field: "Date of birth", name: "10 mar 2000", icon: <BsCalendar2Date /> },
     {
-      field: "country region",
+      field: "address",
       name: "ahemdabad gujrat",
       icon: <FaGlobeAsia />,
+    },
+    {
+      field: "phone number",
+      name: "7014780586",
+      icon: <PiPhoneBold />,
     },
     { field: "language", name: "English", icon: <TbLanguageHiragana /> },
     {
