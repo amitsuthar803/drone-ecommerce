@@ -7,14 +7,22 @@ import Racing from "../../assets/racing.png";
 import Construction from "../../assets/construction.png";
 import Videography from "../../assets/video.png";
 import { useNavigate } from "react-router-dom";
+import { motion, useScroll } from "framer-motion";
+import { useRef } from "react";
 
 function Home() {
   const navigate = useNavigate();
 
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+  });
+
   return (
     <>
       <section className="w-full flex-col flex">
-        <div
+        <motion.div
+          ref={targetRef}
           id="hero-section"
           className="w-full  bg-contain lg:bg-cover flex justify-center items-center"
         >
@@ -34,7 +42,7 @@ function Home() {
               <TbDrone />
             </button>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section

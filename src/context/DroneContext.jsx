@@ -112,18 +112,6 @@ function DroneProvider({ children }) {
   // old code base
   const steps = ["Cart", "Address", "Payment"];
 
-  const nextHandler = (navigate) => {
-    currentStep === steps.length
-      ? setComplete(true)
-      : setCurrentStep((prev) => prev + 1);
-  };
-
-  const PrevHandler = (navigate) => {
-    currentStep === steps.length
-      ? setComplete(false)
-      : setCurrentStep((prev) => prev - 1);
-  };
-
   const category = [
     "All",
     "Fun",
@@ -399,6 +387,18 @@ function DroneProvider({ children }) {
     return totalPrice;
   }
 
+  const nextHandler = (navigate) => {
+    currentStep === steps.length
+      ? setComplete(true)
+      : setCurrentStep((prev) => prev + 1);
+  };
+
+  const PrevHandler = (navigate) => {
+    currentStep === steps.length
+      ? setComplete(false)
+      : setCurrentStep((prev) => prev - 1);
+  };
+
   return (
     <DroneContext.Provider
       value={{
@@ -421,6 +421,10 @@ function DroneProvider({ children }) {
         setSelectedDrone,
         selectedDrone,
         wishlistDrones,
+        nextHandler,
+        PrevHandler,
+        steps,
+        setCurrentStep,
       }}
     >
       {children}

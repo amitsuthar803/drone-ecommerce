@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import Modal from "../ui/Modal";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import { useDroneData } from "../context/DroneContext";
 import { AiOutlineEye } from "react-icons/ai";
@@ -102,11 +104,13 @@ function Shop() {
                 className=" max-sm:p-3 p-4 border-[1px] border-[#F6F6F6] shadow-md rounded-lg bg-[#FFFFFF] flex flex-col"
               >
                 <div className="py-5 relative rounded-md bg-[#F6F6F6]">
-                  <img
+                  <LazyLoadImage
                     className="w-[250px] m-auto flex items-center justify-center"
                     src={drone.imageUrl}
                     loading="lazy"
                     alt=""
+                    effect="blur"
+                    placeholderSrc={"../../assets/favicon.png"}
                   />
                   <span className="absolute max-sm:top-1 max-sm:left-1  top-2 left-2  bg-[#ececec] p-1 rounded-full">
                     <AiOutlineEye

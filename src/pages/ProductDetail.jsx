@@ -22,10 +22,10 @@ function ProductDetail() {
 
   return (
     selectProduct && (
-      <div className="flex w-full lg:mt-[3rem] justify-between h-[100vh] gap-10  max-sm:flex-col lg:items-start">
-        <div className="flex-1 relative max-sm:rounded-t-[20px]  flex justify-center max-sm:items-center max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
+      <div className="flex w-full mt-[3rem] h-screen justify-between  gap-10  max-sm:flex-col lg:items-start">
+        <div className="flex-1 relative max-sm:rounded-t-[20px]  flex justify-center max-sm:items-start max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
           <img
-            className="lg:h-[100%] md:h-[60%] sm:h-[40%]"
+            className="lg:h-[100%] md:h-[60%] sm:h-[40%] object-contain"
             src={selectProduct.imageUrl}
             alt=""
           />

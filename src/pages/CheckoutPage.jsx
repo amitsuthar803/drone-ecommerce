@@ -4,16 +4,18 @@ import ProductMobileView from "../ui/ProductMobileView";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import CheckoutCard from "../ui/CheckoutCard";
+import Spinner from "../ui/Spinner";
 
 function CheckoutPage() {
-  const { currentUser, clearCart } = useDroneData();
-  console.log(currentUser);
+  const { currentUser, clearCart, loading } = useDroneData();
 
   // Calculate total items in cart
   const totalItemsInCart = currentUser?.cartItems.reduce(
     (total, item) => total + item.qty,
     0
   );
+
+  if (loading) return <Spinner />;
 
   return (
     <div className="w-full">

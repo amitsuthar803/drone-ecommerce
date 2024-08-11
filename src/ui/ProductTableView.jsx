@@ -6,6 +6,8 @@ import QuantityButton from "./QuantityButton";
 function ProductTableView() {
   const { currentUser, removeFromCart, handleWishlist } = useDroneData();
 
+ 
+
   const isInWishlist = (productId) => {
     return currentUser?.wishlistItems.includes(productId);
   };

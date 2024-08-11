@@ -4,8 +4,9 @@ import { useDroneData } from "../context/DroneContext";
 import { useNavigate } from "react-router-dom";
 
 function CheckoutCard() {
+  const { nextHandler, calculateTotalPrice, currentUser } = useDroneData();
   const [open, setOpen] = useState(false);
-  const { nextHandler, calculateTotalPrice } = useDroneData();
+
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -130,7 +131,7 @@ function CheckoutCard() {
             </div>
             <div className="flex text-[16px] justify-between font-semibold">
               <h3>Order Total</h3>
-              <h3>{calculateTotalPrice}₹</h3>
+              <h3>{calculateTotalPrice(currentUser)}₹</h3>
             </div>
           </div>
         </div>
