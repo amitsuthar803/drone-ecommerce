@@ -22,22 +22,20 @@ function ProductDetail() {
 
   return (
     selectProduct && (
-      <div className="flex justify-between w-full gap-5 max-sm:h-auto mt-2 h-screen   max-sm:flex-col">
-        {/* img */}
-
-        <div className="relative max-sm:pb-10 max-sm:rounded-xl   max-sm:items-center  max-sm:bg-gradient-to-r from-slate-100 to-gray-300 max-sm:w-full  w-1/2 flex items-start  justify-center">
+      <div className="flex w-full mt-[3rem] h-screen justify-between  gap-10  max-sm:flex-col lg:items-start">
+        <div className="w-1/2 bg-red-500 relative max-sm:rounded-t-[20px]  flex justify-center max-sm:items-start max-sm:bg-gradient-to-r from-red-500 to-orange-500 ">
           <img
-            className=" object-contain w-[80%]"
+            className=" object-contain"
             src={selectProduct.imageUrl}
             alt=""
           />
           <IoIosArrowRoundBack
             onClick={() => navigate("/shop")}
-            className=" absolute md:text-slate-400 md:hover:bg-slate-400 md:hover:bg-opacity-20 cursor-pointer  hover:bg-slate-100 hover:bg-opacity-20 left-[20px] top-4 text-[22px] rounded-full h-[25px] w-[25px] "
+            className=" absolute md:text-slate-400 md:hover:bg-slate-400 md:hover:bg-opacity-20 cursor-pointer  hover:bg-slate-100 hover:bg-opacity-20 left-4 top-4 text-[22px] rounded-full h-[25px] w-[25px] "
           />
         </div>
-        {/* data */}
-        <div className="w-1/2 max-sm:w-full flex p-5 max-sm:bg-[#ffffff]  max-md:z-10  max-sm:mt-[-60px] max-sm:rounded-t-[20px] md:items-start justify-start flex-col">
+
+        <div className="w-1/2 flex p-5 max-sm:bg-[#FFF]  max-md:z-10  mt-[-60px] max-sm:rounded-t-[20px] md:items-start justify-start flex-col">
           <h1 className="font-semibold text-[1.2rem] lg:text-[1.5rem]">
             {selectProduct.name}
           </h1>
