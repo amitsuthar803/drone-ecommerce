@@ -22,7 +22,7 @@ function ProductDetail() {
 
   return (
     selectProduct && (
-      <div className="flex justify-between w-full gap-5   mt-2 h-screen   max-sm:flex-col">
+      <div className="flex justify-between w-full gap-5  min-h-screen mt-2   max-sm:flex-col">
         {/* img */}
 
         <div className="relative max-sm:pb-10 max-sm:rounded-xl   max-sm:items-center  max-sm:bg-gradient-to-r from-slate-100 to-gray-300 max-sm:w-full  w-1/2 flex items-start  justify-center">
@@ -37,7 +37,7 @@ function ProductDetail() {
           />
         </div>
         {/* data */}
-        <div className="w-1/2 max-sm:w-full flex p-5 max-sm:bg-[#ffffff]  max-md:z-10  max-sm:mt-[-60px] max-sm:rounded-t-[20px] md:items-start justify-start flex-col">
+        <div className="w-1/2 max-sm:w-full flex p-5 max-sm:bg-[#ffffff]   md:items-start justify-start flex-col">
           <h1 className="font-semibold text-[1.2rem] lg:text-[1.5rem]">
             {selectProduct.name}
           </h1>
