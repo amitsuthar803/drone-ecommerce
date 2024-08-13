@@ -71,7 +71,7 @@ function Home() {
         <motion.div
           variants={childrenVarients}
           id="hero-section"
-          className="w-full  bg-contain lg:bg-cover flex justify-center items-center"
+          className="w-full  h-dvh    bg-contain lg:bg-cover flex justify-center items-center"
         >
           <motion.div
             initial={{
@@ -120,7 +120,7 @@ function Home() {
 
       <motion.section
         id="products"
-        className="flex lg:mt-10 lg:py-4 flex-col justify-start items-center text-center w-full"
+        className="flex lg:mt-10 mt-4 lg:py-4 flex-col justify-start items-center text-center w-full"
       >
         <h2 className="font-semibold text-[1.6rem] lg:text-3xl  mb-3">
           Elevate Your Experience: Drones for Every Need

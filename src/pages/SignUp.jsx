@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import toast from "react-hot-toast";
+import droneLogo from "../../assets/favicon.png";
 
 function SignUp() {
   // initialize Firebase authenitication and navogation
@@ -60,7 +61,7 @@ function SignUp() {
     <div className="w-full h-screen flex-col bg-black  justify-center items-center overflow-hidden  flex">
       <div className="flex  flex-col p-20 max-md:p-10  justify-center">
         <span className="flex items-center justify-center gap-4 mb-8">
-          <img src="./assets/favicon.png" width={50} alt="" />
+          <img src={droneLogo} width={50} alt="" />
           <h2 className="text-white capitalize">Spy World</h2>
         </span>
         <form

@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import toast from "react-hot-toast";
+import droneLogo from "../../assets/favicon.png";
 
 function Login() {
   // initialize Firebase authentication and navigation
@@ -33,8 +34,8 @@ function Login() {
 
   return (
     <div className="w-full h-screen flex-col bg-black justify-center items-center  flex">
-      <span className="flex items-center justify-center gap-4">
-        <img src="./assets/favicon.png" width={50} alt="" />
+      <span className="flex items-center mt-8 justify-center gap-4">
+        <img src={droneLogo} width={50} alt="" />
         <h2 className="text-white capitalize">Spy World</h2>
       </span>
 
