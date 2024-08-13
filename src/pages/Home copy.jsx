@@ -7,101 +7,21 @@ import Racing from "../../assets/racing.png";
 import Construction from "../../assets/construction.png";
 import Videography from "../../assets/video.png";
 import { useNavigate } from "react-router-dom";
-import {
-  delay,
-  easeInOut,
-  motion,
-  stagger,
-  useAnimation,
-  useInView,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { easeIn } from "framer-motion/dom";
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 function Home() {
   const navigate = useNavigate();
-  const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: true });
-
-  const mainControls = useAnimation();
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end end"],
-  });
-
-  useEffect(() => {
-    if (isInView) {
-      mainControls.start("visible");
-    }
-  }, [isInView]);
-
-  const childrenContainerVarients = {
-    hidden: {
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-
-      transition: {
-        staggerChildren: 0.25,
-      },
-    },
-  };
-
-  const childrenVarients = {
-    hidden: {
-      opacity: 0,
-    },
-    show: {
-      opacity: 1,
-    },
-  };
 
   return (
-    <motion.div>
-      <motion.section
-        variants={childrenContainerVarients}
-        initial="hidden"
-        animate="show"
-        className="w-full flex-col flex"
-      >
-        <motion.div
-          variants={childrenVarients}
+    <motion.div initial="hidden" animate="show">
+      <section className="w-full flex-col flex">
+        <div
           id="hero-section"
           className="w-full  bg-contain lg:bg-cover flex justify-center items-center"
         >
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: "200%",
-            }}
-            animate={{
-              opacity: 0.8,
-              y: 0,
-            }}
-            transition={{
-              ease: easeInOut,
-              duration: 0.8,
-            }}
-            className="lg:bg-white lg:opacity-80 bg-black text-white lg:text-black rounded-sm px-2 py-[2rem] flex-col text-center backdrop-blur-sm bg-opacity-80  flex justify-center items-center w-[80%] lg:w-[50%]"
-          >
-            <motion.span
-              animate={{
-                x: [0, -40, 40, 0],
-              }}
-              transition={{
-                repeat: Infinity,
-                ease: "linear",
-                duration: 3,
-                delay: 1,
-              }}
-            >
-              <GiDeliveryDrone size={25} />
-            </motion.span>
-            <h2 className="text-xl font-semibold mt-3">The Spy World</h2>
+          <div className="lg:bg-white lg:opacity-80 bg-black text-white lg:text-black rounded-sm px-2 py-[2rem] flex-col text-center backdrop-blur-sm bg-opacity-80  flex justify-center items-center w-[80%] lg:w-[50%]">
+            <GiDeliveryDrone size={25} />
+            <h2 className="text-xl font-semibold mt-5">The Spy World</h2>
             <p className="w-[85%] mt-2">
               All handmade with the best PCB material and best-in-class 3D
               printing machines.
@@ -114,9 +34,9 @@ function Home() {
               Discover Our Collection
               <TbDrone />
             </button>
-          </motion.div>
-        </motion.div>
-      </motion.section>
+          </div>
+        </div>
+      </section>
 
       <motion.section
         id="products"
@@ -131,18 +51,18 @@ function Home() {
         </p>
 
         <motion.div className="flex justify-center flex-col-reverse sm:flex-row items-center px-5">
-          <motion.div className="">
+          <div className="">
             <h3 className="font-semibold text-xl">
               Drones for Play and Personal Use
             </h3>
             <p className="mt-2 text-center text-sm text-gray-500">
               Safe, fun, and easy to fly – perfect for your personal adventures.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div className="p-5 flex justify-center items-center">
+          <div className="p-5 flex justify-center items-center">
             <img className="w-[60%]" src={Personal} alt="" />
-          </motion.div>
+          </div>
         </motion.div>
 
         <motion.div className="flex justify-center flex-col sm:flex-row items-center p-10">
