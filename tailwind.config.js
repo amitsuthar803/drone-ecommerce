@@ -9,7 +9,7 @@ export default {
       ...colors,
     },
     fontFamily: {
-      sans: ["Montserrat"],
+      sans: ["Poppins"],
     },
     extend: {},
   },
