@@ -22,7 +22,7 @@ function ProductDetail() {
 
   return (
     selectProduct && (
-      <div className="flex justify-between w-full gap-5  min-h-screen mt-2   max-sm:flex-col">
+      <div className="flex justify-start w-full gap-5  min-h-screen mt-2   max-sm:flex-col">
         {/* img */}
 
         <div className="relative max-sm:pb-10 max-sm:rounded-xl   max-sm:items-center  max-sm:bg-gradient-to-r from-slate-100 to-gray-300 max-sm:w-full  w-1/2 flex items-start  justify-center">

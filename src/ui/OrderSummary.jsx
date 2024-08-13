@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import ProductSummaryCard from "./ProductSummaryCard";
+import { useDroneData } from "../context/DroneContext";
 
 function CheckoutCard() {
   const [open, setOpen] = useState(false);
+  const { calculateTotalPrice, currentUser } = useDroneData();
 
   return (
     <div className="flex flex-col md:w-1/3   justify-start border-[1px]  shadow-sm border-[#666] items-start bg-gray-200 p-4 w-full">
@@ -25,7 +27,7 @@ function CheckoutCard() {
             <div className="flex flex-col gap-1 justify-start items-start">
               <div className="flex text-sm  text-gray-500 font-semibold justify-between w-full">
                 <span>Cart Subtotal</span>
-                <span>₹6500</span>
+                <span>₹{calculateTotalPrice(currentUser)}</span>
               </div>
               <div className="flex text-sm  text-gray-500 font-semibold justify-between w-full">
                 <span>Shipping</span>
@@ -38,7 +40,7 @@ function CheckoutCard() {
               <div className="w-full border-t-[1px] mt-2 py-2 border-[#888]  flex flex-col">
                 <div className="flex text-[15px] text-heading font-semibold justify-between w-full">
                   <span>Order Total</span>
-                  <span>₹7000</span>
+                  <span>₹{calculateTotalPrice(currentUser) + 500}</span>
                 </div>
               </div>
             </div>

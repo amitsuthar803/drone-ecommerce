@@ -123,7 +123,7 @@ function CheckoutCard() {
           <div className="flex pb-2 flex-col border-b-[1px] border-[#888] w-full">
             <div className="flex justify-between text-sm font-semibold">
               <h5>Subtotal</h5>
-              <h4>1000₹</h4>
+              <h4>{calculateTotalPrice(currentUser)}₹</h4>
             </div>
             <div className="flex text-[12px] text-gray-500 justify-between font-semibold">
               <h6>Tax</h6>
