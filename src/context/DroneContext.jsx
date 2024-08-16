@@ -9,12 +9,15 @@ import {
 } from "firebase/auth";
 import { auth, db } from "../firebase";
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
   getDocs,
   onSnapshot,
+  serverTimestamp,
   updateDoc,
+  writeBatch,
 } from "firebase/firestore";
 import toast from "react-hot-toast";
 
@@ -399,6 +402,51 @@ function DroneProvider({ children }) {
       : setCurrentStep((prev) => prev - 1);
   };
 
+  // order placing function
+  const placeOrder = async (userId, cartItems, totalAmount) => {
+    try {
+      const docRef = await addDoc(collection(db, "Orders"), {
+        userId: userId,
+        products: cartItems,
+        totalAmount: totalAmount,
+        status: "Pending",
+        paymentStatus: "Paid",
+        timeStamp: serverTimestamp(),
+      });
+
+      console.log("Order placed with ID:", docRef.id);
+      toast.success(`#${docRef.id} Order Successfully Placed`);
+    } catch (err) {
+      console.log("Error adding document:", err);
+    }
+  };
+
+  // update orderStatus
+  const updateOrderStatus = async (orderId, newStatus) => {
+    const orderRef = doc(db, "Orders", orderId);
+    await updateDoc(orderRef, {
+      status: newStatus,
+    });
+  };
+
+  // delete orders from orderas collection
+  const deleteAllOrders = async () => {
+    try {
+      const ordersCollectionRef = collection(db, "Orders");
+      const ordersSnapshot = await getDocs(ordersCollectionRef);
+      const batch = writeBatch(db);
+
+      ordersSnapshot.forEach((orderDoc) => {
+        const orderRef = doc(db, "Orders", orderDoc.id);
+        batch.delete(orderRef);
+      });
+      await batch.commit();
+      console.log("All orders have been deleted successfuly");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <DroneContext.Provider
       value={{
@@ -425,6 +473,8 @@ function DroneProvider({ children }) {
         PrevHandler,
         steps,
         setCurrentStep,
+        placeOrder,
+        deleteAllOrders,
       }}
     >
       {children}

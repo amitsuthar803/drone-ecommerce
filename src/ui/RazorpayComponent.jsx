@@ -3,12 +3,12 @@ import { useDroneData } from "../context/DroneContext";
 
 const RazorpayComponent = () => {
   const [amount, setAmount] = useState(60000); // Default amount in paise
-  const { nextHandler } = useDroneData();
+  const { nextHandler, placeOrder, currentUser } = useDroneData();
 
-  const loadScript = (src) => {
+  const loadRazorpayScript = () => {
     return new Promise((resolve) => {
       const script = document.createElement("script");
-      script.src = src;
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
       script.onload = () => {
         resolve(true);
       };
@@ -19,48 +19,35 @@ const RazorpayComponent = () => {
     });
   };
 
-  const displayRazorpay = async () => {
-    nextHandler();
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
+  const displayRazorpay = async (orderDetails) => {
+    const res = await loadRazorpayScript();
 
     if (!res) {
       alert("Razorpay SDK failed to load. Are you online?");
       return;
     }
 
-    const order = {
-      id: "order_DBJOWzybf0sJbb",
-      currency: "INR",
-      amount: amount, // 50000 paise = INR 500
-    };
-
     const options = {
-      key: "rzp_test_aQNyeoZFEcWwro",
-      amount: order.amount,
-      currency: order.currency,
-      name: "Your Company Name",
+      key: "rzp_test_aQNyeoZFEcWwro", // Replace with your Razorpay key
+      amount: 100, // Amount in paise
+      currency: "INR",
+      name: "Spy World",
       description: "Test Transaction",
-      image: "https://your_logo_url",
-      order_id: order.id,
+      order_id: orderDetails.id, // Replace with order_id
       handler: function (response) {
         alert(
-          "Payment successful. Payment ID: " + response.razorpay_payment_id
+          `Payment successful! Payment ID: ${response.razorpay_payment_id}`
         );
-        alert("Order ID: " + response.razorpay_order_id);
-        alert("Signature: " + response.razorpay_signature);
+        // Call placeOrder with necessary parameters
+        placeOrder(currentUser?.userId, currentUser?.cartItems, amount);
       },
       prefill: {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        contact: "9999999999",
-      },
-      notes: {
-        address: "Razorpay Corporate Office",
+        name: currentUser?.name,
+        email: currentUser?.email,
+        contact: currentUser?.phone,
       },
       theme: {
-        color: "#3399cc",
+        color: "#F37254",
       },
     };
 
@@ -68,11 +55,30 @@ const RazorpayComponent = () => {
     paymentObject.open();
   };
 
+  const handlePlaceOrder = async () => {
+    // Simulate creating an order and getting order details
+    const orderDetails = {
+      userId: currentUser?.userId,
+      cartItems: currentUser?.cartItems,
+      totalAmount: 60000, // Example total amount in INR
+    };
+
+    // Call the placeOrder function to create the order in Firestore
+    await placeOrder(
+      orderDetails.userId,
+      orderDetails.cartItems,
+      orderDetails.totalAmount / 100
+    );
+
+    // Proceed to Razorpay payment
+    displayRazorpay(orderDetails);
+  };
+
   return (
     <div>
       <button
         className="bg-black py-2 px-5 text-white uppercase text-sm"
-        onClick={displayRazorpay}
+        onClick={() => handlePlaceOrder(currentUser)}
       >
         Place Order
       </button>

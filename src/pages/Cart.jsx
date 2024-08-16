@@ -3,11 +3,9 @@ import { useDroneData } from "../context/DroneContext";
 import { Outlet } from "react-router-dom";
 
 function Cart() {
-  // Calculate total items in cart
-  // const totalItemsInCart = currentUser?.cartItems.reduce(
-  //   (total, item) => total + item.qty,
-  //   0
-  // );
+  const { currentUser, deleteAllOrders } = useDroneData();
+
+  console.log(currentUser);
 
   return (
     <div className="flex justify-start items-center text-center w-full flex-col">
@@ -15,6 +13,10 @@ function Cart() {
       <Stepper />
 
       <Outlet />
+
+      <div>
+        {/* <button onClick={deleteAllOrders}>Delete All Order</button> */}
+      </div>
     </div>
   );
 }
