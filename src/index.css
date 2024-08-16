@@ -19,9 +19,9 @@ body {
 #hero-section {
   position: relative;
   background-image: url("../assets/drone-making-82d14d.jpg");
-
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: cover;
   border-radius: 5px;
   overflow: hidden; /* Ensures the overlay stays within the section */
 }
