@@ -414,7 +414,6 @@ function DroneProvider({ children }) {
         timeStamp: serverTimestamp(),
       });
 
-      console.log("Order placed with ID:", docRef.id);
       toast.success(`#${docRef.id} Order Successfully Placed`);
     } catch (err) {
       console.log("Error adding document:", err);
@@ -475,6 +474,7 @@ function DroneProvider({ children }) {
         setCurrentStep,
         placeOrder,
         deleteAllOrders,
+        complete,
       }}
     >
       {children}

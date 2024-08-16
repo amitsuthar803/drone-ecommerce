@@ -153,9 +153,7 @@ function ShippingAddress() {
               State/Province<span className=" text-red-600">*</span>
             </label>
             <select className="w-[70%] px-2 py-1 border-2 " name="state" id="">
-              <option selected value="default">
-                Please select a region, state or province
-              </option>
+              <option>Please select a region, state or province</option>
               <option value="">Rajasthan</option>
               <option value="">Haryana</option>
               <option value="">Karnatak</option>

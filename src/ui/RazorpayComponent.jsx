@@ -3,7 +3,7 @@ import { useDroneData } from "../context/DroneContext";
 
 const RazorpayComponent = () => {
   const [amount, setAmount] = useState(60000); // Default amount in paise
-  const { nextHandler, placeOrder, currentUser } = useDroneData();
+  const { nextHandler, placeOrder, currentUser, setComplete } = useDroneData();
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -38,6 +38,8 @@ const RazorpayComponent = () => {
         alert(
           `Payment successful! Payment ID: ${response.razorpay_payment_id}`
         );
+        nextHandler();
+        
         // Call placeOrder with necessary parameters
         placeOrder(currentUser?.userId, currentUser?.cartItems, amount);
       },
@@ -55,30 +57,11 @@ const RazorpayComponent = () => {
     paymentObject.open();
   };
 
-  const handlePlaceOrder = async () => {
-    // Simulate creating an order and getting order details
-    const orderDetails = {
-      userId: currentUser?.userId,
-      cartItems: currentUser?.cartItems,
-      totalAmount: 60000, // Example total amount in INR
-    };
-
-    // Call the placeOrder function to create the order in Firestore
-    await placeOrder(
-      orderDetails.userId,
-      orderDetails.cartItems,
-      orderDetails.totalAmount / 100
-    );
-
-    // Proceed to Razorpay payment
-    displayRazorpay(orderDetails);
-  };
-
   return (
     <div>
       <button
         className="bg-black py-2 px-5 text-white uppercase text-sm"
-        onClick={() => handlePlaceOrder(currentUser)}
+        onClick={displayRazorpay}
       >
         Place Order
       </button>
